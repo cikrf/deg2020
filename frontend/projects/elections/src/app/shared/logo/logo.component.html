@@ -1,0 +1,8 @@
+<a [routerLink]="homeLink" class="logo">
+    <img src="{{baseHref}}assets/RT_full_logo-RGB_Horizontal_rus.png" alt="Ростелеком">
+    <span class="logo__text">{{ this.getText(logoType) | translate}}</span>
+    <div *ngIf="logoType !== 'menu'" class="hide-desktop logo__mobile">
+        <span class="logo__text_mobile">{{ this.getText(logoType) | translate }}</span>
+        <div *ngIf="false" class="logo__close icon icon--xs icon-close"></div>
+    </div>
+</a>

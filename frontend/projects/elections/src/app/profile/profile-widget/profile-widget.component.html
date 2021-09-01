@@ -1,0 +1,40 @@
+<nav class="header__profile profile" *ngIf="!light else light">
+    <ng-container
+            *ngIf="userName$ | async as userName"
+    >
+        <span class="profile__link">
+            {{ userName }}
+        </span>
+        <button class="profile__logout logout" (click)="logout()">
+            <svg class="logout__img" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16.5283 8.55012L19 11H7V13H19L16.5283 15.4499L18 17L23 12L18 7L16.5283 8.55012Z"
+                      fill="#7187B7"/>
+                <path d="M14 16H12V19H3V5H12V8H14V3H1V21H14V16Z" fill="#7187B7"/>
+            </svg>
+        </button>
+    </ng-container>
+</nav>
+
+<ng-template #light>
+    <nav class="header__profile profile__light">
+        <button class="profile__logout logout-light" (click)="logout()">
+            <span class="logout-light__exit text-caption">
+                {{ 'PROFILE.EXIT' | translate }}
+            </span>
+            <svg class="logout-light__img" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16.5283 8.55012L19 11H7V13H19L16.5283 15.4499L18 17L23 12L18 7L16.5283 8.55012Z"
+                      fill="#858B92"/>
+                <path d="M14 16H12V19H3V5H12V8H14V3H1V21H14V16Z" fill="#858B92"/>
+            </svg>
+        </button>
+    </nav>
+</ng-template>
+
+<ng-template #anon>
+    <a href="javascript:void(0)" class="profile__link profile_link">
+        <span class="profile_link__text">{{'PROFILE.LABEL' | translate}}</span>
+        <svg class="profile_link__img" viewBox="0 0 4 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M4 4L0 0L0 8L4 4Z" fill="#F3F5FB"/>
+        </svg>
+    </a>
+</ng-template>

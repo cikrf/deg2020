@@ -1,0 +1,73 @@
+@import '../../../../../shared/styles/_styles.scss';
+
+:host {
+  width: 100%;
+}
+
+header {
+  background-color: $color-primary;
+
+  @media (max-width: $breakpoint-sm-top) {
+    align-items: center;
+    & > .container {
+      flex: 0 0 50px;
+      padding: 0;
+      margin: 0 0 0 10px;
+    }
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    min-height: 80px;
+    @media (max-width: $breakpoint-sm-top) {
+      display: none;
+    }
+
+      &-center {
+      justify-content: center;
+    }
+
+    &-text {
+      font-family: $font-family-body;
+      color: $color-white;
+      font-weight: bold;
+
+      @media (min-width: $breakpoint-md-bottom) {
+        margin-left: $padding * 2;
+        font-size: $font-size-body;
+        line-height: $line-height-body;
+      }
+
+      @media (max-width: $breakpoint-sm-top) {
+        font-size: 14px;
+        line-height: 18px;
+      }
+    }
+  }
+}
+
+.timer {
+  @media (max-width: $breakpoint-sm-top) {
+    //display: none;
+    position: static;
+    margin: 0 auto;
+    padding-top: 5px;
+    width: 170px;
+    min-height: 48px;
+  }
+  position: absolute;
+  right: 8px;
+  width: 200px;
+  height: 32px;
+  top: 16px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+
+  img {
+    height: 60px;
+  }
+}

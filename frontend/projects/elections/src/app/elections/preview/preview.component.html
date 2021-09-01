@@ -1,0 +1,173 @@
+<article class="main" *ngIf="(election$ | async) as election">
+    <div class="container">
+        <app-header-light></app-header-light>
+        <!-- Правила заполнения бюллетеня -->
+        <div class="rules">
+            <h2 class="title title_rules">{{'RULES.TITLE' | translate}}</h2>
+            <div class="rules__list">
+                <div class="rules__list-item">
+                    <div class="rules__list-item-top">
+                        <div class="rules__list-item-icon rules__list-item-icon_calendar"></div>
+                        <div class="rules__list-item-title">
+                            {{ election.distance || 'RULES.RULE_TITLE_1' | translate }}
+                        </div>
+                    </div>
+                    <div class="rules__list-item-desc">
+                        {{'RULES.RULE_TEXT_1_1' | translate}}
+                        <strong>{{ election.startDateTime | startDate: 'H:mm d MMMM y' || 'RULES.RULE_TEXT_1_2' | translate}}</strong>
+                        {{'RULES.RULE_TEXT_1_3' | translate}}
+                        <strong>{{election.endDateTime | startDate: 'H:mm d MMMM y' || 'RULES.RULE_TEXT_1_4' | translate}}</strong>
+                        {{'RULES.RULE_TEXT_1_5' | translate}}
+                    </div>
+                </div>
+                <div class="rules__list-item">
+                    <div class="rules__list-item-top">
+                        <div class="rules__list-item-icon rules__list-item-icon_device"></div>
+                        <div class="rules__list-item-title">
+                            {{'RULES.RULE_TITLE_2' | translate}}
+                        </div>
+                    </div>
+                    <div class="rules__list-item-desc" [innerHTML]="'RULES.RULE_TEXT_2' | translate"></div>
+                </div>
+                <div class="rules__list-item">
+                    <div class="rules__list-item-top">
+                        <div class="rules__list-item-icon rules__list-item-icon_wifi"></div>
+                        <div class="rules__list-item-title">
+                            {{'RULES.RULE_TITLE_3' | translate}}
+                        </div>
+                    </div>
+                    <div class="rules__list-item-desc" [innerHTML]="'RULES.RULE_TEXT_3' | translate"></div>
+                </div>
+                <div class="rules__list-item">
+                    <div class="rules__list-item-top">
+                        <div class="rules__list-item-icon rules__list-item-icon_voice"></div>
+                        <div class="rules__list-item-title">
+                            {{'RULES.RULE_TITLE_4' | translate}}
+                        </div>
+                    </div>
+                    <div class="rules__list-item-desc" [innerHTML]="'RULES.RULE_TEXT_4' | translate"></div>
+                </div>
+                <!--<div class="rules__list-item">
+                    <div class="rules__list-item-top">
+                        <div class="rules__list-item-icon rules__list-item-icon_confirmation"></div>
+                        <div class="rules__list-item-title">
+                            {{'RULES.RULE_TITLE_5' | translate}}
+                        </div>
+                    </div>
+                    <div class="rules__list-item-desc">
+                        {{'RULES.RULE_TEXT_5_1' | translate}}
+                        {{'RULES.RULE_TEXT_5_2' | translate}}
+                        <a [href]="profileUrl" target="_blank">{{'RULES.RULE_LINK_5_3' | translate}}</a>
+                    </div>
+                </div>-->
+                <div class="rules__list-item">
+                    <div class="rules__list-item-top">
+                        <div class="rules__list-item-icon rules__list-item-icon_security"></div>
+                        <div class="rules__list-item-title">
+                            {{'RULES.RULE_TITLE_6' | translate}}
+                        </div>
+                    </div>
+                    <div class="rules__list-item-desc">
+                        {{'RULES.RULE_TEXT_6_1' | translate}}
+                        {{'RULES.RULE_TEXT_6_2' | translate}}
+                    </div>
+                </div>
+                <div class="rules__list-item">
+                    <div class="rules__list-item-top">
+                        <div class="rules__list-item-icon rules__list-item-icon_bulletin"></div>
+                        <div class="rules__list-item-title">
+                            {{'RULES.RULE_TITLE_7' | translate}}
+                        </div>
+                    </div>
+                    <div class="rules__list-item-desc">
+                        {{'RULES.RULE_TEXT_7_1' | translate}}
+                        <a (click)="showPreview()">{{'RULES.RULE_LINK_7' | translate}}</a> <!-- заменить ссылку -->
+                        {{'RULES.RULE_TEXT_7_2' | translate}}
+                        {{'RULES.RULE_TEXT_7_3' | translate}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Процесс дистанционного электронного голосования -->
+        <div class="process-deg">
+            <div class="process-deg__title">{{'PROCESS_DEG.TITLE' | translate}}</div>
+            <div class="process-deg__steps">
+                <div class="process-deg__step step">
+                    <div class="step__content">
+                        <div class="step__number">
+                            <span>1</span>
+                        </div>
+                        <div class="step__title">
+                            {{'PROCESS_DEG.STEP1' | translate}}
+                        </div>
+                    </div>
+                    <div class="step__text">
+                        {{'PROCESS_DEG.STEP1TEXT_1' | translate}}
+                        <a [href]="profileUrl">{{'PROCESS_DEG.STEP1TEXT_2' | translate}}</a>
+                    </div>
+                </div>
+                <div class="process-deg__step step">
+                    <div class="step__content">
+                        <div class="step__number">
+                            <span>2</span>
+                        </div>
+                        <div class="step__title">
+                            {{'PROCESS_DEG.STEP2' | translate}}
+                        </div>
+                    </div>
+                    <div class="step__text">
+                        {{'PROCESS_DEG.STEP2TEXT' | translate}}
+                    </div>
+                </div>
+                <div class="process-deg__step step">
+                    <div class="step__content">
+                        <div class="step__number">
+                            <span>3</span>
+                        </div>
+                        <div class="step__title">
+                            {{'PROCESS_DEG.STEP3' | translate}}
+                        </div>
+                    </div>
+                    <div class="step__text">
+                        {{'PROCESS_DEG.STEP3TEXT' | translate}}
+                    </div>
+                </div>
+                <div class="process-deg__step step">
+                    <div class="step__content">
+                        <div class="step__number">
+                            <span>4</span>
+                        </div>
+                        <div class="step__title">
+                            {{'PROCESS_DEG.STEP4' | translate}}
+                        </div>
+                    </div>
+                    <div class="step__text">
+                        {{'PROCESS_DEG.STEP4TEXT' | translate}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="preview">
+<!--                        <app-spinner *ngIf="spinner$ | async"></app-spinner>-->
+<!--                        <div class="preview__image" *ngIf="image$ | async as image">-->
+<!--                            <img [src]="image" alt="">-->
+<!--                        </div>-->
+            <div class="preview__familiar">
+                <div class="checkbox">
+                    <input id="familiar" class="checkbox__input" type="checkbox" (change)="toggleFamiliar()">
+                    <label for="familiar" class="checkbox__label">{{ 'PREVIEW.FAMILIAR' | translate }}</label>
+                </div>
+            </div>
+            <ng-container *ngIf="electionId$ | async as electionId">
+                <button
+                        type="button"
+                        [class.button-disabled]="(familiar$ | async) === false"
+                        (click)="goToVoting(electionId)"
+                        class="button button-blue"
+                >{{'BUTTONS.TO_VOICE' | translate}}</button>
+            </ng-container>
+        </div>
+
+    </div>
+</article>

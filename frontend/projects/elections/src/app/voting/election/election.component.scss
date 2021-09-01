@@ -1,0 +1,18 @@
+@import '../../../../../../shared/styles/variables';
+
+.container {
+  height: 100% !important;
+}
+
+.title {
+  font-size: 30px;
+  line-height: 32px;
+  @media (min-width: $breakpoint-md-bottom) {
+    margin: $padding*2 auto $padding*4 auto;
+    display: none;
+  }
+  @media (max-width: $breakpoint-sm-top) {
+    margin: $padding*2 auto;
+    display: none;
+  }
+}

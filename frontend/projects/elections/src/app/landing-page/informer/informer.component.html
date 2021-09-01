@@ -1,0 +1,18 @@
+<div class="informer">
+    <div class="container">
+        <div class="informer__block">
+            <div class="informer__title">
+                {{title}}
+            </div>
+            <div class="informer__sub-title" *ngIf="subTitle !== ''">
+                {{subTitle}}
+            </div>
+            <div class="informer__text">
+                <ng-content></ng-content>
+            </div>
+            <button class="button button-blue" routerLink="{{link}}" [disabled]="disabled">
+                {{button}}
+            </button>
+        </div>
+    </div>
+</div>

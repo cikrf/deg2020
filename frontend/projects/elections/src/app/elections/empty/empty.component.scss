@@ -1,0 +1,15 @@
+@import 'shared/styles/variables';
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__text {
+    margin-top: $padding*2;
+    max-width: 400px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 24px;
+    color: #515A63;
+  }
+}

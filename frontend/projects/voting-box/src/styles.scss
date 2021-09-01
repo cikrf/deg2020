@@ -1,0 +1,378 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'shared/styles/styles';
+
+@font-face {
+  font-family: ALS Ekibastuz;
+  src: url('assets/fonts/als_ekibastuz_bold.woff') format("woff"), url('assets/fonts/ALS_Ekibastuz_Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: FranklinGothic;
+  src: url('assets/fonts/FranklinGothic/FranklinGothicBookCondC.otf') format("opentype");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: FranklinGothic;
+  src: url('assets/fonts/FranklinGothic/FranklinGothicMediCondC.otf') format("opentype");;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: FranklinGothic;
+  src: url('assets/fonts/FranklinGothic/FranklinGothicDemiCondC.otf') format("opentype");
+  font-weight: bold;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  //position: relative;
+  //max-width: 100%;
+}
+
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  background-color: #ffffff;
+}
+
+@media (max-width: $breakpoint-sm-top) {
+  html, body {
+    min-height: initial;
+    height: 100%;
+  }
+}
+
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+a {
+  text-decoration: none;
+  color: $color-secondary;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  border: none;
+}
+
+button {
+  cursor: pointer;
+  padding: 0;
+  background: none;
+  &:hover,
+  &:focus,
+  &:active {
+    outline: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body,
+body * {
+  font-family: FranklinGothic, Helvetica, Sans !important;
+}
+
+article {
+  height: 100%;
+}
+
+.container {
+  margin: 0 auto;
+}
+
+@media (min-width: $breakpoint-lg-bottom) {
+  .container {
+    width: 1120px;
+  }
+}
+
+@media (min-width: $breakpoint-md-bottom) and (max-width: $breakpoint-md-top) {
+  .container {
+    width: 688px;
+  }
+}
+
+@media (max-width: $breakpoint-sm-top) {
+  .container {
+    width: 100%;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+h1 {
+  font-family: $font-family-h1;
+  font-size: $font-size-h1;
+  line-height: $line-height-h1;
+}
+
+h2 {
+  font-family: $font-family-h2;
+  font-size: $font-size-h2;
+  line-height: $line-height-h2;
+}
+
+h3 {
+  font-family: $font-family-h3;
+  font-size: $font-size-h3;
+  line-height: $line-height-h3;
+}
+
+/* ----- */
+/* ICONS */
+/* ----- */
+
+/* default, sizes */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  &--lg {
+    width: 64px;
+    height: 64px;
+    flex: 0 0 64px;
+  }
+  &--md {
+    width: 48px;
+    height: 48px;
+    flex: 0 0 48px;
+  }
+  &--sm {
+    width: 24px;
+    height: 24px;
+    flex: 0 0 24px;
+  }
+  &--xs {
+    width: 16px;
+    height: 16px;
+    flex: 0 0 16px;
+  }
+}
+
+/* items */
+.icon {
+  &-android {
+    background-image: url('assets/icons/icon-android.svg');
+  }
+  &-answer {
+    background-image: url('assets/icons/icon-answer.svg');
+  }
+  &-apple {
+    background-image: url('assets/icons/icon-apple.svg');
+  }
+  &-arrow-circle {
+    background-image: url('assets/icons/icon-arrow-circle.svg');
+  }
+  &-arrow-left {
+    background-image: url('assets/icons/icon-arrow-left.svg');
+    padding: 4px 5px;
+  }
+  &-attention {
+    background-image: url('assets/icons/icon-attention.svg');
+  }
+  &-attention-red {
+    background-image: url('assets/icons/icon-attention-red.svg');
+  }
+  &-bio {
+    background-image: url('assets/icons/icon-bio.svg');
+  }
+  &-bio-ok {
+    background-image: url('assets/icons/icon-bio-ok.svg');
+  }
+  &-bio-square {
+    background-image: url('assets/icons/icon-bio-square.svg');
+    padding: 1px;
+  }
+  &-bio-square-ok {
+    background-image: url('assets/icons/icon-bio-square-ok.svg');
+    padding: 1px;
+  }
+  &-bulletin {
+    background-image: url('assets/icons/icon-bulletin.svg');
+  }
+  &-bulletin-municipal {
+    background-image: url('assets/icons/icon-bulletin-municipal.svg');
+  }
+  &-bulletin-federal {
+    background-image: url('assets/icons/icon-bulletin-federal.svg');
+  }
+  &-bulletin-regional {
+    background-image: url('assets/icons/icon-bulletin-regional.svg');
+  }
+  &-clip {
+    background-image: url('assets/icons/icon-clip.svg');
+  }
+  &-close {
+    background-image: url('assets/icons/icon-close.svg');
+    padding: 6px;
+  }
+  &-close-blue {
+    background-image: url('assets/icons/icon-close-blue.svg');
+    padding: 4.5px;
+  }
+  &-close-red {
+    background-image: url('assets/icons/icon-close-red.svg');
+    padding: 4.5px;
+  }
+  &-close-photo {
+    background-image: url('assets/icons/icon-close-photo.svg');
+  }
+  &-done {
+    background-image: url('assets/icons/icon-done.svg');
+  }
+  &-place {
+    background-image: url('assets/icons/icon-place.svg');
+    padding: 1px 3px;
+  }
+  &-radio {
+    background-image: url('assets/icons/icon-radio.svg');
+    padding: 2px;
+  }
+  &-radio-checked {
+    background-image: url('assets/icons/icon-radio-checked.svg');
+    padding: 2px;
+  }
+  &-spinner {
+    background-image: url('assets/icons/icon-spinner.svg');
+    animation: spinner cubic-bezier(.5,.75,.57,.3) 1s infinite;
+    @keyframes spinner {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
+  &-success {
+    background-image: url('assets/icons/icon-success.svg');
+  }
+  &-success-blue {
+    background-image: url('assets/icons/icon-success-blue.svg');
+  }
+  &-trinagle {
+    background-image: url('assets/icons/icon-trinagle.svg');
+    padding: 4px 6px;
+  }
+}
+
+.card {
+  background: $color-white;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, .1);
+  border-radius: 4px;
+  padding: $padding * 4 $padding * 5 $padding * 5 $padding * 5;
+}
+
+.card_outer {
+  padding: $padding * 5 0 $padding * 8 0;
+}
+
+.breadcrumb {
+  padding-top: $padding * 2;
+  padding-bottom: $padding * 4;
+  &__item {
+    font-size: $font-size-caption;
+    line-height: $line-height-caption;
+    font-family: $font-family-caption;
+    font-weight: $font-weight-caption;
+    color: $color-grey-medium;
+    display: flex;
+    align-items: center;
+    .icon {
+      width: 8px;
+      height: 6px;
+    }
+    span {
+      margin-left: 12px;
+    }
+  }
+}
+
+.only-mobile {
+  @media (min-width: $breakpoint-md-bottom) {
+    display: none !important;
+  }
+}
+
+.only-tablet {
+  @media (max-width: $breakpoint-sm-top) and (min-width: $breakpoint-lg-bottom) {
+    display: none !important;
+  }
+}
+
+.only-desktop {
+  @media (max-width: $breakpoint-md-top) {
+    display: none !important;
+  }
+}
+
+.hide-mobile {
+  @media (max-width: $breakpoint-sm-top) {
+    display: none !important;
+  }
+}
+
+.hide-tablet {
+  @media (min-width: $breakpoint-md-bottom) and (max-width: $breakpoint-md-top) {
+    display: none !important;
+  }
+}
+
+.hide-desktop {
+  @media (min-width: $breakpoint-lg-bottom) {
+    display: none !important;
+  }
+}

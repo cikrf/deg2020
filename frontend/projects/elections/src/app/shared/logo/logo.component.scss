@@ -1,0 +1,68 @@
+@import '../../../../../../shared/styles/_styles.scss';
+
+.logo {
+  display: flex;
+  align-items: center;
+
+  img {
+    height: 40px;
+  }
+
+  &__img {
+    @media (min-width: $breakpoint-md-bottom) {
+      flex: 0 0 40px;
+      height: 40px;
+      width: 40px;
+    }
+    @media (max-width: $breakpoint-sm-top) {
+      flex: 0 0 24px;
+      height: 24px;
+      width: 24px;
+    }
+  }
+
+  &__text {
+    font-size: $font-size-body;
+    line-height: $line-height-body;
+    font-family: $font-family-body;
+    color: $color-white;
+    margin-left: $padding * 2;
+    font-weight: bold;
+
+    @media (max-width: $breakpoint-sm-top) {
+      display: none;
+    }
+
+    &_mobile {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 16px;
+      color: #FFFFFF;
+    }
+  }
+
+  &__mobile {
+    @media (max-width: $breakpoint-sm-top) {
+      margin-left: 12px;
+      flex: 1 1 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    @media (min-width: $breakpoint-md-bottom) and (max-width: $breakpoint-md-top) {
+      margin-left: $padding*2;
+      flex: 1 1 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__close {
+    @media (max-width: $breakpoint-sm-top) {
+      display: inline-flex;
+      margin-left: $padding*2;
+    }
+  }
+}

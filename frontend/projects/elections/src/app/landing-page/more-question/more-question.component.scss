@@ -1,0 +1,114 @@
+@import '../../../../../../shared/styles/_styles.scss';
+
+:host {
+  width: 100%;
+}
+
+.more-question {
+  font-family: $font-family-landing;
+
+  &__block {
+    padding: 59px 0 54px;
+
+    @media (max-width: $breakpoint-sm-top) {
+      padding: 34px 8px 32px;
+    }
+  }
+
+  &__title {
+    font-size: $font-size-h0;
+    line-height: $line-height-h0;
+    text-align: center;
+    color: $color-black;
+    font-weight: $font-weight-landing-medium;
+
+    @media (max-width: $breakpoint-sm-top) {
+      font-size: $font-size-landing-title;
+      line-height: $line-height-landing-title;
+    }
+  }
+
+  &__desc {
+    margin-top: 7px;
+    font-size: $font-size-landing-title;
+    line-height: $line-height-landing-title;
+    text-align: center;
+    color: $color-black;
+    font-weight: $font-weight-landing-normal;
+
+    @media (max-width: $breakpoint-sm-top) {
+      margin-top: 14px;
+      font-size: $font-size-landing-little;
+      line-height: $line-height-landing-little;
+    }
+  }
+
+  &__phone {
+    margin-top: 22px;
+    text-align: center;
+    color: $color-red;
+    display: flex;
+    flex-direction: column;
+
+    @media (max-width: $breakpoint-sm-top) {
+      margin-top: 17px;
+    }
+
+    a {
+      color: $color-red;
+      font-size: $font-size-landing-timer;
+      line-height: $line-height-landing-timer;
+      font-weight: $font-weight-landing-medium;
+
+      @media (max-width: $breakpoint-sm-top) {
+        font-size: $font-size-landing-button;
+        line-height: $line-height-landing-button;
+      }
+    }
+
+    a + a {
+      margin-top: 17px;
+
+      @media (max-width: $breakpoint-sm-top) {
+        margin-top: 8px;
+      }
+    }
+  }
+
+  &__text {
+    font-size: $font-size-landing-title;
+    line-height: $line-height-landing-title;
+    text-align: center;
+    color: $color-black;
+    font-weight: $font-weight-landing-normal;
+    margin-top: 2px;
+
+    @media (max-width: $breakpoint-sm-top) {
+      font-size: $font-size-landing-little;
+      line-height: $line-height-landing-little;
+    }
+  }
+
+  &__link {
+    font-size: $font-size-landing-title;
+    line-height: $line-height-landing-title;
+    text-align: center;
+    color: $color-black;
+    font-weight: $font-weight-landing-normal;
+    margin-top: 24px;
+
+    @media (max-width: $breakpoint-sm-top) {
+      font-size: $font-size-landing-little;
+      line-height: $line-height-landing-little;
+    }
+
+    a {
+      color: $color-blue-bg-light;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

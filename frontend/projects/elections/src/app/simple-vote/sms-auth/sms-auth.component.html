@@ -1,0 +1,134 @@
+<div class="container">
+    <app-header-light></app-header-light>
+    <div class="numbers">
+        <h2 class="title only-desktop">{{'LOGO.VALIDATION' | translate}}</h2>
+        <ng-container *ngIf="(result$ | async) === null">
+            <h2 class="title hide-desktop">{{'LOGO.VALIDATION' | translate}}</h2>
+            <div class="card numbers__card">
+                <div class="numbers__content">
+                    <ng-container *ngIf="loading$ | async; else controls">
+                        <app-spinner></app-spinner>
+                    </ng-container>
+                    <ng-template #controls>
+                        <!--<h2 class="text-h2 numbers__title">{{ "SMS.TITLE" | translate }}</h2>-->
+                        <!--<div class="text-body numbers__subtitle">
+                            <ng-container *ngIf="phoneNumber$ | async as number; else spinner">
+                                {{ "SMS.SENT" | translate }} {{ number }}
+                            </ng-container>
+                        </div>-->
+                        <div class="numbers__container">
+                            <div class="numbers__col">
+                                <div class="numbers__desc">
+                                    {{ "SMS.PRETITLE" | translate }}<br><br>
+                                    {{ "SMS.SUBTITLE" | translate }}
+                                    <strong>{{phoneNumber$ | async}}</strong>
+                                </div>
+                                <form [formGroup]="form" class="numbers__form" (submit)="verify()">
+                                    <div class="numbers__digits">
+                                        <div class="numbers__digit-wrapper">
+                                            <label class="numbers__digit-label">{{ "SMS.CODE" | translate }}</label>
+                                            <input autofocus numeric type="number"
+                                                   (keydown)="onKeydown($event)"
+                                                   class="numbers__digit"
+                                                   [class.error]="(verificationError$ | async)"
+                                                   formControlName="code"
+                                            />
+                                        </div>
+                                        <div class="numbers__error" *ngIf="verificationError$ | async">
+                                            {{ verificationError$.value }}
+                                        </div>
+                                    </div>
+                                    <div class="numbers__buttons">
+                                        <ng-container *ngIf="(resend$ | async) === false">
+                                            <button class="button button-blue"
+                                                    type="submit"
+                                                    [disabled]="!form.valid || (phoneNumber$ | async)===null"
+                                            >
+                                                {{ "SMS.SEND" | translate }}
+                                            </button>
+                                            <div class="numbers__buttons-notification" *ngIf="(timer$ | async) as left">
+                                                {{ "SMS.AVAILABLE" | translate }}
+                                                <strong>{{left}}</strong>
+                                            </div>
+                                        </ng-container>
+                                        <ng-container *ngIf="resend$ | async">
+                                            <button class="button button-blue"
+                                                    type="button"
+                                                    disabled
+                                            >
+                                                {{ "SMS.SEND" | translate }}
+                                            </button>
+                                            <div class="not-available">
+                                                <div class="not-available__text">{{ 'SMS.NOT_AVAILABLE' | translate }}</div>
+                                                <a (click)="resend$.next(false)"
+                                                   class="not-available__button">
+                                                    {{ "SMS.RETRY" | translate }}
+                                                </a>
+                                            </div>
+                                        </ng-container>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="numbers__col">
+                                <div class="numbers__block" #access
+                                     [class.visible]="mouseAccess === access"
+                                >
+                                    <div class="numbers__block-title"
+                                         (mouseenter)="mouseAccess=access">
+                                        <span>{{ "SMS.HELP.ACCESS" | translate }}</span>
+                                    </div>
+                                    <div class="numbers__block-text">
+                                        {{ "SMS.HELP.CHANGE_1" | translate }}
+                                        <a href="https://esia.gosuslugi.ru/profile/" target="_blank">
+                                            {{ "SMS.HELP.CHANGE_LINK" | translate }}
+                                        </a>
+                                        {{ "SMS.HELP.CHANGE_2" | translate }}
+                                    </div>
+                                </div>
+                                <div class="numbers__block" #wrong
+                                     [class.visible]="mouseWrong === wrong"
+                                >
+                                    <div class="numbers__block-title"
+                                         (mouseenter)="mouseWrong=wrong">
+                                        <span>{{ "SMS.HELP.WRONG" | translate }}</span>
+                                    </div>
+                                    <div class="numbers__block-text">
+                                        <!--
+                                        {{ "SMS.HELP.SUPPORT" | translate }}
+                                        <a href="https://www.gosuslugi.ru/feedback" target="_blank">
+                                            {{ "SMS.HELP.SUPPORT_LINK" | translate }}
+                                        </a>
+                                        -->
+                                        {{ "SMS.HELP.CODE_AGAIN" | translate }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                    <ng-template #spinner>
+                        <div class="icon icon--sm icon-spinner"></div>
+                    </ng-template>
+                </div>
+            </div>
+        </ng-container>
+        <app-result
+                *ngIf="result$ | async as result"
+                class="numbers__result"
+                [icon]="result.icon"
+                [title]="result.title"
+                [text]="result.message"
+        >
+            <!--        <a *ngIf="result.icon === iconsCollection.success" class="button" routerLink="/">-->
+            <!--            {{ "SMS.CANCEL" | translate }}-->
+            <!--        </a>-->
+            <a *ngIf="result.routerLink; else link"
+               (click)="navigate(result.routerLink)"
+               class="button button-blue"
+            >{{ result.buttonText }}</a>
+            <ng-template #link>
+                <a href="{{ result.link }}" class="button button-blue">{{ result.buttonText }}</a>
+            </ng-template>
+        </app-result>
+
+    </div>
+</div>

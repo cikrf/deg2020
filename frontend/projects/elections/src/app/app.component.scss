@@ -1,0 +1,84 @@
+@import 'shared/styles/_styles.scss';
+
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  min-height: 100%;
+  flex-direction: column;
+
+  app-header {
+    @media (min-width: $breakpoint-md-bottom) {
+      flex: 0 0 40px;
+    }
+    @media (max-width: $breakpoint-sm-top) {
+      flex: 0 0 48px;
+    }
+  }
+
+  main {
+    flex: 1 1 auto;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    & ::ng-deep > * {
+      width: 100%;
+      flex: 0 0 100%;
+      &:empty {
+        display: none;
+      }
+    }
+  }
+
+  app-footer {
+    margin-top: auto;
+    flex: 0 0 100%;
+  }
+}
+
+.noebs {
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: $padding * 3;
+  &__icon {
+    width: 167px;
+    height: 171px;
+    flex: 1 1 100%;
+  }
+  &__title {
+    margin-top: $padding * 5;
+    flex: 1 1 100%;
+    text-align: center;
+  }
+  &__text {
+    margin-top: $padding * 5;
+    flex: 1 1 100%;
+    text-align: center;
+  }
+  &__apps {
+    margin-top: $padding * 5;
+    flex: 1 1 100%;
+    text-align: center;
+  }
+}
+
+.apps {
+  &__list {
+    display: flex;
+    justify-content: center;
+  }
+  &__item {
+    margin-right: $padding * 5;
+  }
+  &__link {
+    border-radius: 32px;
+    &_img {
+      border-radius: 32px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, .1);
+    }
+  }
+}

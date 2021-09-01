@@ -1,0 +1,14 @@
+<header>
+    <div class="container">
+        <div class="header header-center">
+            <a class="logo">
+                <img src="{{baseHref}}assets/RT_full_logo-RGB_Horizontal_rus.png" alt="Ростелеком">
+                <span class="header-text">{{'LOGO.ANONYMOUS' | translate}}</span>
+            </a>
+        </div>
+    </div>
+    <div class="timer header-text" *ngIf="timer | ballotTimer | async as timerDuration">
+        {{'LOGO.TIMER' | translate}}<br>
+        {{timerDuration.days}} д {{timerDuration.hours}} ч {{timerDuration.minutes}} м {{timerDuration.seconds}} с
+    </div>
+</header>

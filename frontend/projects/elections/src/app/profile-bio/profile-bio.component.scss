@@ -1,0 +1,178 @@
+@import '../../../../../shared/styles/styles';
+
+.profile {
+  &__content {
+    @media (min-width: $breakpoint-md-bottom) {
+      display: flex;
+    }
+  }
+  &__info {
+    @media (min-width: $breakpoint-lg-bottom) {
+      flex: 0 0 571px;
+      padding-right: 40px;
+    }
+  }
+  &__title {
+    display: flex;
+    @media (min-width: $breakpoint-md-bottom) {
+      line-height: 36px;
+    }
+  }
+  &__img {
+    @media (min-width: $breakpoint-lg-bottom) {
+      width: 250px;
+      flex: 0 0 250px;
+      height: 322px;
+      margin-top: 12px;
+    }
+    @media (min-width: $breakpoint-md-bottom) and (max-width: $breakpoint-md-top) {
+      width: 220px;
+      flex: 0 0 220px;
+      height: 193px;
+      margin-top: 12px;
+      float: right;
+    }
+    @media (max-width: $breakpoint-sm-top) {
+      width: 80px;
+      height: 72px;
+      margin-top: 0;
+      float: right;
+    }
+  }
+  &__data {
+    margin-top: $padding * 4;
+  }
+  &__bio {
+    @media (min-width: $breakpoint-lg-bottom) {
+      margin-top: 46px;
+    }
+    @media (min-width: $breakpoint-md-bottom) and (max-width: $breakpoint-md-top) {
+      margin-top: 40px;
+    }
+  }
+}
+
+.data {
+  @media (min-width: $breakpoint-lg-bottom) {
+    display: flex;
+    &__item {
+      &:not(:first-child) {
+        margin-left: $padding * 5;
+      }
+    }
+  }
+  @media (min-width: $breakpoint-md-bottom) and (max-width: $breakpoint-md-top) {
+    display: block;
+    &__item {
+      display: flex;
+      align-items: center;
+      margin-left: 0;
+      &:not(:first-child) {
+        margin-top: $padding;
+      }
+    }
+    .data__value {
+      padding-top: 0 !important;
+      padding-left: 5px;
+    }
+    .data__label:after {
+      content: ': ';
+    }
+  }
+  @media (max-width: $breakpoint-sm-top) {
+    &__item {
+      &:not(:first-child) {
+        margin-top: 12px;
+      }
+    }
+  }
+  &__label {
+    @media (min-width: $breakpoint-md-bottom) {
+      color: $color-grey-medium;
+    }
+    @media (max-width: $breakpoint-sm-top) {
+      color: $color-black;
+      display: inline;
+      font-size: 14px;
+      line-height: 22px;
+      &:after {
+        content: ': ';
+      }
+    }
+  }
+  &__value {
+    padding-top: $padding;
+    color: $color-black;
+    @media (max-width: $breakpoint-sm-top) {
+      font-size: 14px;
+      line-height: 22px;
+      display: inline;
+    }
+  }
+}
+
+.change {
+  @media (min-width: $breakpoint-lg-bottom) {
+    margin-top: $padding * 2;
+  }
+  @media (min-width: $breakpoint-md-bottom) and (max-width: $breakpoint-md-top) {
+    margin-top: $padding;
+  }
+  @media (max-width: $breakpoint-sm-top) {
+    margin-top: 12px;
+  }
+  &__data {
+    color: $color-secondary;
+  }
+  &__lang {
+    @media (min-width: $breakpoint-lg-bottom) {
+      margin-top: 44px;
+    }
+    @media (min-width: $breakpoint-md-bottom) and (max-width: $breakpoint-md-top) {
+      margin-top: 40px;
+    }
+    @media (max-width: $breakpoint-sm-top) {
+      margin-top: 12px;
+    }
+  }
+}
+
+.bio {
+  display: flex;
+  flex-wrap: wrap;
+  &:not(.bio--registered) {
+    .bio__icon {
+      filter: grayscale(100%) brightness(1.7);
+    }
+    .bio__text {
+      color: $color-grey-medium;
+    }
+  }
+  &.bio--registered {
+    .bio__text {
+      color: #317D34;
+    }
+  }
+  &__icon {
+    flex: 0 0 24px;
+  }
+  &__text {
+    flex: 0 0 calc(100% - #{$padding * 2} - 24px);
+    margin-left: $padding * 2;
+  }
+  &__more {
+    @media (min-width: $breakpoint-md-bottom) {
+      margin-top: $padding * 4;
+    }
+    @media (max-width: $breakpoint-sm-top) {
+      margin-top: $padding * 5;
+      width: 100%;
+    }
+  }
+}
+
+.lang {
+  &__link {
+    color: $color-secondary;
+  }
+}

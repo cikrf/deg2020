@@ -1,0 +1,31 @@
+<div class="popup" id="openModal">
+    <div class="container">
+        <div class="popup__top">
+            <div class="popup__top-title modal_close">
+                {{title}}
+            </div>
+            <div class="popup__top-close modal_close"></div>
+        </div>
+        <div class="popup__container">
+            <div class="popup__header">
+                <div class="popup__header-logo"></div>
+                <div class="popup__header-title">
+                    <div class="title">
+                        {{election.name}}
+                    </div>
+                    <div class="desc">
+                        {{election.districtName}}
+                    </div>
+                </div>
+            </div>
+            <div class="popup__list">
+                <div class="popup__list-item" *ngFor="let candidate of election.candidates">
+                    <app-candidate
+                        [candidate]="candidate"
+                        [electionId]="election.externalId"
+                    ></app-candidate>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

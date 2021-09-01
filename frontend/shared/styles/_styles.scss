@@ -1,0 +1,304 @@
+@import 'shared/styles/variables';
+
+.hidden {
+  display: none !important;
+}
+
+.button {
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 4px;
+  font-family: $font-family-button;
+  font-style: normal;
+  font-weight: normal;
+  text-align: center;
+  letter-spacing: 0.02em;
+  padding: 11px 24px;
+  color: $color-secondary;
+  background-color: $color-white;
+  border: 1px solid $color-secondary;
+  transition: ease all 0.3s;
+  min-width: 160px;
+  @media (min-width: $breakpoint-lg-bottom) {
+    font-size: $font-size-button;
+    line-height: $line-height-button;
+  }
+  @media (min-width: $breakpoint-md-bottom) and (max-width: $breakpoint-md-top) {
+    font-size: $font-size-button;
+    line-height: $line-height-button;
+  }
+  @media (max-width: $breakpoint-sm-top) {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  &:hover {
+    background-color: #F5F8FA;
+  }
+
+  &:disabled {
+    background: #B0B8C0 !important;
+    border-color: #B0B8C0 !important;
+    color: #fff;
+    cursor: not-allowed;
+  }
+}
+
+.button-blue {
+  color: $color-white;
+  background-color: $color-secondary;
+  border: 1px solid $color-secondary;
+
+  &:hover {
+    background-color: $color-primary;
+    border-color: $color-primary;
+  }
+}
+
+.button-disabled {
+  background: #B0B8C0 !important;
+  border-color: #B0B8C0 !important;
+  color: #fff;
+  cursor: not-allowed;
+}
+
+.text-main {
+  font-family: $font-family-main;
+  font-weight: $font-weight-main;
+  color: $color-main;
+  @media (min-width: $breakpoint-md-bottom) {
+    font-size: $font-size-main;
+    line-height: $line-height-main;
+  }
+  @media (max-width: $breakpoint-sm-top) {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+
+.text-h0 {
+  font-family: $font-family-h0;
+  font-weight: $font-weight-h0;
+  color: $color-h0;
+  @media (min-width: $breakpoint-md-bottom) {
+    font-size: $font-size-h0;
+    line-height: $line-height-h0;
+  }
+  @media (max-width: $breakpoint-sm-top) {
+    font-size: 22px;
+    line-height: 24px;
+  }
+}
+
+.text-h1 {
+  font-family: $font-family-h1;
+  font-weight: $font-weight-h1;
+  color: $color-h1;
+  @media (min-width: $breakpoint-md-bottom) {
+    font-size: $font-size-h1;
+    line-height: $line-height-h1;
+  }
+  @media (max-width: $breakpoint-sm-top) {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+
+.text-h2 {
+  font-family: $font-family-h2;
+  font-weight: $font-weight-h2;
+  color: $color-h2;
+  @media (min-width: $breakpoint-md-bottom) {
+    font-size: $font-size-h2;
+    line-height: $line-height-h2;
+  }
+  @media (max-width: $breakpoint-sm-top) {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+
+.text-h3 {
+  font-family: $font-family-h3;
+  font-weight: $font-weight-h3;
+  color: $color-h3;
+  @media (min-width: $breakpoint-md-bottom) {
+    font-size: $font-size-h3;
+    line-height: $line-height-h3;
+  }
+  @media (max-width: $breakpoint-sm-top) {
+    font-size: 14px;
+    line-height: 24px;
+  }
+}
+
+.text-body {
+  font-family: $font-family-body;
+  font-weight: $font-weight-body;
+  color: $color-body;
+  @media (min-width: $breakpoint-md-bottom) {
+    font-size: $font-size-body;
+    line-height: $line-height-body;
+  }
+  @media (max-width: $breakpoint-sm-top) {
+    font-size: 14px;
+    line-height: 22px;
+  }
+}
+
+.text-caption {
+  font-family: $font-family-caption;
+  font-weight: $font-weight-caption;
+  color: $color-caption;
+  @media (min-width: $breakpoint-md-bottom) {
+    font-size: $font-size-caption;
+    line-height: $line-height-caption;
+  }
+  @media (max-width: $breakpoint-sm-top) {
+    font-size: 14px;
+    line-height: 22px;
+  }
+}
+
+.text-notification {
+  font-family: $font-family-notification;
+  font-weight: $font-weight-notification;
+  color: $color-notification;
+  @media (min-width: $breakpoint-md-bottom) {
+    font-size: $font-size-notification;
+    line-height: $line-height-notification;
+  }
+  @media (max-width: $breakpoint-sm-top) {
+    font-size: 12px;
+    line-height: 22px;
+  }
+}
+
+.text-button {
+  font-size: $font-size-button;
+  line-height: $line-height-button;
+  font-family: $font-family-button;
+  color: $color-button;
+  font-weight: $font-weight-button;
+}
+
+.text-button-bold {
+  @extend .text-button;
+  font-weight: $font-weight-button-bold;
+}
+
+.modal:not(.styles-custom) {
+  background: rgba(16, 18, 23, 0.16);
+
+  &.screen-fixed {
+    @media (max-width: $breakpoint-sm-top) {
+      position: fixed;
+      .modal__block {
+        width: 100% !important;
+        height: 100vh !important;
+        margin: 0 !important;
+      }
+    }
+  }
+
+  .modal__block {
+    border-radius: 4px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, .1);
+    padding: $padding * 6 $padding * 5 $padding * 5 $padding * 5;
+    @media (min-width: $breakpoint-lg-bottom) {
+      width: 448px;
+      margin: 100px auto 0 auto;
+    }
+    @media (min-width: $breakpoint-md-bottom) and (max-width: $breakpoint-md-top) {
+      width: 448px;
+      margin: 100px auto 0 auto;
+    }
+    @media (max-width: $breakpoint-sm-top) {
+      border-radius: 0;
+      margin: 0;
+      width: 100%;
+    }
+  }
+
+  .modal__close {
+    position: absolute;
+    right: 25px;
+    top: 25px;
+    z-index: 101;
+  }
+
+  .modal_close {
+    .modal__img {
+      width: 14px;
+      height: 14px;
+      pointer-events: none;
+    }
+  }
+
+  .modal__content {
+    height: 100%;
+    @media (max-width: $breakpoint-sm-top) {
+      min-height: 100vh;
+    }
+
+    .modal--center {
+      text-align: center;
+    }
+  }
+
+
+}
+
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+
+  .modal__block {
+    background-color: $color-white;
+  }
+
+  &--clear-styles {
+    .modal__block {
+      padding: 0 !important;
+    }
+  }
+}
+
+.modal_content {
+  &__title {
+    margin-top: $padding * 2;
+    padding: 1px 0;
+    line-height: 28px;
+  }
+
+  &__text {
+    margin-top: $padding * 3;
+    color: $color-grey-medium;
+  }
+
+  &__button {
+    margin-top: $padding * 4;
+  }
+
+  &__buttons {
+    .button:not(:first-child) {
+      margin-left: $padding * 2;
+    }
+  }
+
+  @media (max-width: $breakpoint-sm-top) {
+    &__body {
+      height: 100%;
+
+      .container {
+        padding-left: 0;
+        padding-right: 0;
+        height: 100%;
+      }
+    }
+  }
+}

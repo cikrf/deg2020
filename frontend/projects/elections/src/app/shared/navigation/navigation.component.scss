@@ -1,0 +1,56 @@
+@import 'shared/styles/_styles.scss';
+
+:host {
+  display: block;
+}
+
+.navi {
+  &__list {
+    display: flex;
+  }
+  &__item {
+    &:not(:first-child) {
+      margin-left: 40px;
+    }
+  }
+  &__link {
+    color: #99A8D0;
+    &:hover {
+      color: $color-white;
+    }
+  }
+}
+
+.sandwich {
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+
+.sandwich_navi {
+  top: 48px;
+  left: 0;
+  right: 0;
+  position: absolute;
+  display: block;
+  background-color: #fff;
+  z-index: 1001;
+  &__list {
+    padding: $padding * 2;
+  }
+  &__item {
+    &:not(:first-child) {
+      margin-top: $padding * 2;
+    }
+  }
+  &__link {
+    font-size: 14px;
+    line-height: 22px;
+    align-items: center;
+    color: $color-primary;
+    display: inline-block;
+  }
+}

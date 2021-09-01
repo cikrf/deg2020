@@ -1,0 +1,63 @@
+<ng-container *ngIf="progress$ | async as progress; else notProgress">
+    <ng-container *ngIf="progress < 100; else done">
+        <div class="modal_content__body">
+            <article class="card__outer generate">
+                <div class="container">
+                    <div class="card generate__content">
+                        <div class="generate__loading loading">
+                            <div class="loading__bar">
+                                <div class="loading__progressbar" [style.width]="progress + '%'"></div>
+                            </div>
+                            <div class="loading__percents">
+                                {{ progress }}%
+                            </div>
+                        </div>
+                        <div class="generate__smiles smiles" *ngIf="activeSmile$ | async as activeSmile">
+                            <app-smile
+                                    *ngFor="let item of smilesCountArray; index as i;"
+                                    class="smiles__item"
+                                    [active]="i === activeSmile"
+                                    (hover)="smileHover(i, i === activeSmile)"
+                            ></app-smile>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </ng-container>
+    <ng-template #done>
+        <div class="modal_content__body">
+            <article class="card__outer cipher">
+                <div class="container">
+                    <app-result
+                            class="cipher__done"
+                            [icon]="'success'"
+                            [title]="'CIPHER.DONE.TITLE' | translate"
+                            [text]="'CIPHER.DONE.TEXT' | translate"
+                    >
+                        <button class="button button-blue"
+                                (click)="complete()">{{ 'CIPHER.DONE.OK_BUTTON' | translate }}</button>
+                    </app-result>
+                </div>
+            </article>
+        </div>
+    </ng-template>
+</ng-container>
+<ng-template #notProgress>
+    <div class="modal_content__body">
+        <article class="card__outer cipher">
+            <div class="container">
+                <app-result
+                        class="cipher__inner"
+                        [icon]="'attention-red'"
+                        [title]="'CIPHER.START.TITLE' | translate"
+                        [text]="'CIPHER.START.TEXT' | translate"
+                >
+                    <button class="button button-blue"
+                            (click)="start($event)">{{ 'CIPHER.DEFAULT.BUTTON' | translate }}</button>
+                </app-result>
+            </div>
+        </article>
+    </div>
+</ng-template>
+

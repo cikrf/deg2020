@@ -1,0 +1,9 @@
+<button class="slds-button"
+        [class.slds-button_destructive]="type === 'danger'"
+        [class.slds-button_brand]="type === 'primary'"
+        [class.slds-button_neutral]="type === 'default' || !type"
+        [class.slds-button_success]="type === 'success'"
+        [disabled]="disabled"
+>
+    <ng-content></ng-content>
+</button>

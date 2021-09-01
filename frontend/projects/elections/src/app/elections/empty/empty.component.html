@@ -1,0 +1,10 @@
+<div class="empty">
+    <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="40" cy="40" r="40" fill="#D0D7FC"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M42.9404 35.0961L39.9997 38.0368L37.059 35.0961L35.0958 37.0593L38.0365 40L35.0958 42.9407L37.059 44.9039L39.9997 41.9632L42.9404 44.9039L44.9036 42.9407L41.9629 40L44.9036 37.0593L42.9404 35.0961ZM39.9997 23.3333L56.6663 40L39.9997 56.6667L23.333 40L39.9997 23.3333Z" fill="white"/>
+    </svg>
+    <div class="empty__text" *ngIf="activeTab">{{'EMPTY.ACTIVE_TITLE' | translate}}</div>
+    <div class="empty__text" *ngIf="!activeTab">{{'EMPTY.PASSED_TITLE' | translate}}</div>
+    <div class="empty__text" *ngIf="activeTab">{{'EMPTY.ACTIVE_TEXT_2' | translate}}</div>
+    <div class="empty__text" *ngIf="!activeTab">{{'EMPTY.PASSED_TEXT' | translate}}</div>
+</div>

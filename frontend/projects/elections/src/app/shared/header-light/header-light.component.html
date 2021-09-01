@@ -1,0 +1,7 @@
+<div class="header-light">
+    <button *ngIf="showBack" class="return__button" (click)="back()">
+        <span class="icon icon-arrow-left icon--xs"></span>
+        <span class="return__text text-caption">{{ 'LINKS.BACK' | translate }}</span>
+    </button>
+    <app-profile-widget class="header-light__exit" [light]="true"></app-profile-widget>
+</div>

@@ -1,0 +1,91 @@
+@import '../../styles/styles';
+
+:host .cipher {
+  height: 100%;
+  &__inner ::ng-deep {
+    .result__text {
+      max-width: 495px;
+    }
+    .result__title {
+      max-width: 366px;
+      text-align: center;
+    }
+  }
+  ::ng-deep {
+    .result {
+      margin: 0;
+      height: 100%;
+    }
+  }
+}
+
+.generate {
+  @media (min-width: $breakpoint-md-bottom) {
+    min-height: 600px;
+    margin: $padding*5 auto $padding*8 auto;
+  }
+  @media (max-width: $breakpoint-sm-top) {
+    margin: 0;
+  }
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  &__content {
+    @media (min-width: $breakpoint-lg-bottom) {
+      padding: 40px 200px;
+    }
+    @media (min-width: $breakpoint-md-bottom) and (max-width: $breakpoint-md-top) {
+      padding: 60px 32px 40px 32px;
+    }
+    @media (max-width: $breakpoint-sm-top) {
+      padding: 60px 20px 20px 20px;
+    }
+  }
+  &__loading {
+  }
+  &__smiles {
+    min-height: 392px;
+  }
+}
+
+.loading {
+  &__bar {
+    position: relative;
+    height: 3px;
+    background-color: #DEE0EE;
+    width: 100%;
+  }
+  &__progressbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color: #0B40B3;
+  }
+  &__percents {
+    margin-top: $padding * 3;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    color: $color-black;
+  }
+}
+
+.smiles {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 52px 0 52px 0;
+  &__item {
+    @media (min-width: $breakpoint-md-bottom) {
+      flex: 0 0 25%;
+    }
+    @media (max-width: $breakpoint-sm-top) {
+      flex: 0 0 50%;
+      height: 20px;
+    }
+  }
+}

@@ -1,0 +1,102 @@
+@import '../../../../../../shared/styles/_styles.scss';
+
+:host {
+  width: 100%;
+
+  @media (max-width: $breakpoint-sm-top) {
+    flex: 0 0 40px !important;
+  }
+}
+
+header {
+  background-color: $color-primary;
+  font-family: $font-family-landing;
+  font-weight: $font-weight-landing-medium;
+
+  .header {
+    position: initial;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    justify-content: space-between;
+
+    &--center {
+      justify-content: center;
+      height: 64px;
+
+      @media (max-width: $breakpoint-sm-top) {
+        height: 40px;
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: $breakpoint-sm-top) {
+      padding-left: 8px;
+    }
+
+    &__mobile {
+      display: none;
+      font-size: $font-size-landing-desc;
+      line-height: $line-height-landing-desc;
+      color: $color-white;
+      position: relative;
+      padding-left: 37px;
+
+      &::before {
+        content: "";
+        background-image: url("../../../assets/icons/icon-burger.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 0;
+      }
+
+      @media (max-width: $breakpoint-sm-top) {
+        display: block;
+      }
+    }
+
+    &__list {
+      display: flex;
+
+      @media (max-width: $breakpoint-sm-top) {
+        display: none;
+      }
+
+      &-item {
+        font-size: $font-size-h3;
+        line-height: $line-height-h3;
+        color: $color-white;
+        text-decoration: none;
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: underline;
+
+          @media (max-width: $breakpoint-md-top) {
+            text-decoration: none;
+          }
+        }
+
+        &:not(:first-child) {
+          margin-left: 33px;
+          position: relative;
+          &:before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: -16px;
+            width: 1px;
+            height: 16px;
+            background-color: $color-white;
+            transform: translateY(-50%);
+          }
+        }
+      }
+    }
+  }
+}

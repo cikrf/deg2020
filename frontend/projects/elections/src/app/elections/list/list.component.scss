@@ -1,0 +1,205 @@
+@import 'shared/styles/variables';
+
+.election {
+  background: #FFFFFF;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  margin: $padding auto;
+  //cursor: pointer;
+
+  &__info {
+    display: flex;
+    align-content: flex-start;
+    justify-content: space-between;
+    border-bottom: 1px solid #CED9F0;
+    @media (min-width: $breakpoint-md-bottom) {
+      padding: $padding*3;
+    }
+    @media (max-width: $breakpoint-sm-top) {
+      flex-flow: wrap;
+      padding: $padding*2;
+    }
+
+    &__logo {
+      @media (min-width: $breakpoint-md-bottom) {
+        flex: 0 0 64px;
+        margin-right: $padding*4;
+      }
+      @media (max-width: $breakpoint-sm-top) {
+        flex: 0 0 48px;
+        margin-right: auto;
+        margin-top: -8px;
+      }
+    }
+
+    &__text {
+      @media (min-width: $breakpoint-md-bottom) {
+        flex: 1 1 auto;
+      }
+      @media (max-width: $breakpoint-sm-top) {
+        flex: 0 0 100%;
+        order: 3;
+      }
+    }
+
+    &__link {
+      flex: 0 0 24px;
+      margin-left: $padding*3;
+    }
+
+  }
+
+  &__date {
+    color: #B0B8C0;
+    @media (min-width: $breakpoint-md-bottom) {
+      padding: $padding*3;
+    }
+    @media (max-width: $breakpoint-sm-top) {
+      flex-flow: wrap;
+      padding: $padding*2;
+      font-size: 14px;
+      line-height: 22px;
+    }
+  }
+
+  &:hover {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    transition: background .3s, border-color .3s;
+  }
+}
+
+
+.elections {
+  padding: $padding * 3 0;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @media (min-width: $breakpoint-md-bottom) {
+      padding: $padding * 5 0;
+    }
+    @media (max-width: $breakpoint-sm-top) {
+      display: block;
+      padding: $padding 0 $padding * 4 0;
+    }
+  }
+
+  &__title {
+    @media (max-width: $breakpoint-sm-top) {
+      font-size: 18px;
+      line-height: 22px;
+      padding: 0 $padding;
+    }
+  }
+
+  &__all {
+  }
+
+  &__list {
+  }
+
+  &__item {
+    &:not(:first-child) {
+      margin-top: $padding * 3;
+    }
+  }
+
+  &__tabs {
+    @media (max-width: $breakpoint-sm-top) {
+      margin-top: $padding;
+    }
+  }
+}
+
+.tabs {
+  display: flex;
+
+  &__item {
+    border-bottom: solid 2px #CED9F0;
+    padding: $padding*2 $padding*3;
+    letter-spacing: 0.02em;
+    @media (max-width: $breakpoint-sm-top) {
+      font-size: 14px;
+      font-weight: 600;
+      flex: 1 1 auto;
+    }
+
+    &--active {
+      color: #000000;
+      border-bottom: solid 4px #0B40B3;
+    }
+
+  }
+}
+
+.text {
+  color: $color-grey-dark;
+  @media (max-width: $breakpoint-sm-top) {
+    padding-top: $padding;
+    font-size: 14px;
+    line-height: 22px;
+  }
+}
+
+.ballot-name {
+  @media (max-width: $breakpoint-sm-top) {
+    padding-top: 20px;
+    font-size: 14px;
+    line-height: 24px;
+  }
+}
+
+.issued {
+  display: inline-block;
+  font-size: 13px;
+  line-height: 16px;
+  padding: 4px 11px;
+  background: #EAF2EB;
+  border-radius: 4px;
+  color: #317D34;
+  cursor: pointer;
+  @media (min-width: $breakpoint-md-bottom) {
+    margin: $padding * 2 0;
+  }
+  @media (max-width: $breakpoint-sm-top) {
+    margin: $padding * 2 0 0 0;
+  }
+}
+
+.empty-list__title {
+  /* H2 */
+  font-family: $font-family-franklin;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 26px;
+  text-align: center;
+  margin-top: 32px;
+
+  /* Black */
+  color: #000000;
+}
+
+.empty-list__text {
+  font-family: $font-family-franklin;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  /* or 133% */
+  text-align: center;
+  width: 640px;
+  margin: auto;
+
+  margin-top: 32px;
+
+  /* Grey medium */
+  color: #858B92;
+}
+
+.empty-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

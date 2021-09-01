@@ -1,0 +1,18 @@
+<code_scheme name="Project" version="173">
+  <TypeScriptCodeStyleSettings version="0">
+    <option name="REFORMAT_C_STYLE_COMMENTS" value="true" />
+    <option name="PREFER_AS_TYPE_CAST" value="true" />
+    <option name="USE_DOUBLE_QUOTES" value="false" />
+    <option name="FORCE_QUOTE_STYlE" value="true" />
+    <option name="SPACES_WITHIN_IMPORTS" value="true" />
+    <option name="SPACE_BEFORE_ASYNC_ARROW_LPAREN" value="false" />
+  </TypeScriptCodeStyleSettings>
+  <codeStyleSettings language="TypeScript">
+    <option name="KEEP_SIMPLE_BLOCKS_IN_ONE_LINE" value="true" />
+    <option name="KEEP_SIMPLE_METHODS_IN_ONE_LINE" value="true" />
+    <indentOptions>
+      <option name="INDENT_SIZE" value="2" />
+      <option name="CONTINUATION_INDENT_SIZE" value="2" />
+    </indentOptions>
+  </codeStyleSettings>
+</code_scheme>

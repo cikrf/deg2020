@@ -1,0 +1,31 @@
+<div class="timer">
+    <div class="container">
+        <div class="timer__block">
+            <div class="timer__title">
+                <ng-content></ng-content>
+            </div>
+            <div class="timer__list" *ngIf="due">
+                <ng-container  *ngIf="timer$ | async as timer">
+                    <div class="timer__list-item" *ngFor="let interval of intervals | keyvalue">
+                        <div class="data">{{timer[interval.key]}}</div>
+                        <div class="text">{{interval.value}}</div>
+                    </div>
+                </ng-container>
+            </div>
+            <a
+                *ngIf="button && link"
+                class="button button-blue"
+                [href]="link"
+            >
+                {{button}}
+            </a>
+            <a
+                *ngIf="button && routerLink"
+                class="button button-blue"
+                [routerLink]="routerLink"
+            >
+                {{button}}
+            </a>
+        </div>
+    </div>
+</div>

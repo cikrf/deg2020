@@ -1,0 +1,144 @@
+<ng-container *ngIf="isPreview$ | async; else notPreview">
+    <div class="preview-wrapper">
+        <div class="container" #container>
+            <div class="pre-preview" #prePreview>
+                <div class="text-h2">Для голосования нажмите на бланк</div>
+            </div>
+            <div class="preview-inner">
+                <app-bulletin #preview class="is-preview" [election]="election$ | async"
+                              (click)="disablePreview()"></app-bulletin>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+<ng-template #notPreview>
+    <div class="content">
+        <!--        <app-header *ngIf="false" [timer]="timer$ | async"></app-header> &lt;!&ndash; todo deg-1301, 1269 &ndash;&gt;-->
+        <article class="main not-preview">
+            <div class="container">
+                <div class="main__content">
+                    <ng-container *ngTemplateOutlet="electionView"></ng-container>
+                    <ng-container *ngIf="error$ | async as error">
+                        <!-- TODO: Перевод ошибок -->
+                        <app-result *ngIf="error?.error?.error?.code === 153"
+                                    [icon]="'attention-red'"
+                                    [title]="'Бюллетень недоступен'"
+                        >
+                            <div *ngIf="!error?.error?.error?.description" class="custom-result">
+                                По&nbsp;этому бюллетеню уже был отдан голос<br>
+                                Повторное голосование или изменение решения невозможны
+                            </div>
+                            <div class="custom-buttons">
+                                <a class="button button-blue" href="{{redirectUrl$ | async}}">Вернуться
+                                    на&nbsp;главную</a>
+                            </div>
+                        </app-result>
+                        <app-result *ngIf="error?.error?.error?.code !== 153"
+                                    [icon]="'attention-red'"
+                                    [title]="'Ошибка'"
+                        >
+                            <div *ngIf="!error?.error?.error?.description" class="custom-result">
+                                Нарушены правила заполнения бюллетеня.<br><br>
+                                Если это техническая ошибка, сообщите о&nbsp;ней
+                                в&nbsp;службу поддержки по&nbsp;номеру телефона:
+                                <span><b>8-800-200-36-20</b>.</span><br><br>
+                                При&nbsp;обращении передайте оператору следующие данные:<br>
+                                <b>Операционная система: {{ detectBrowser.os + ' ' + detectBrowser.osVersion }},
+                                    Браузер: {{ detectBrowser.browser + ' ' + detectBrowser.browserMajorVersion }},
+                                    Версия: {{ detectBrowser.browserVersion }}</b>
+                            </div>
+                            <div class="custom-buttons">
+                                <a class="button button-blue" href="{{redirectUrl$ | async}}">Вернуться
+                                    на&nbsp;главную</a>
+                            </div>
+                        </app-result>
+                    </ng-container>
+
+                    <app-result *ngIf="done$ | async"
+                                class="cipher__done"
+                                [icon]="'success-blue'"
+                                [title]="'Спасибо!'"
+                    >
+                        <div class="custom-result">
+                            Вы&nbsp;приняли участие в&nbsp;дистанционном электронном голосовании<br>
+                            <strong>{{(election$ | async).name}}</strong>
+                        </div>
+                        <div class="custom-buttons">
+                            <a class="button button-blue" href="{{redirectUrl$ | async}}">Вернуться на&nbsp;главную</a>
+                        </div>
+                    </app-result>
+                </div>
+                <app-spinner *ngIf="loading$ | async"></app-spinner>
+            </div>
+        </article>
+    </div>
+</ng-template>
+
+<ng-template #electionView>
+    <div id="view"
+         *ngIf="(error$ | async) === null && (done$ | async) === false && (loading$ | async) === false && election$ | async as election">
+        <div class="timer-block" *ngIf="(timer$ | async) | ballotTimer | async as timerDuration">
+            До завершения голосования:
+            <b>{{timerDuration.days}}д&nbsp;{{timerDuration.hours}}ч&nbsp;{{timerDuration.minutes}}
+                мин&nbsp;{{timerDuration.seconds}}сек</b>
+        </div>
+        <div class="election">
+            <!--            <div class="example" *ngIf="false">-->
+            <!--                <div class="example__text">ОБРАЗЕЦ</div>-->
+            <!--            </div>-->
+            <h1 class="election-title">Электронный бюллетень</h1>
+            <div class="election__info">
+                <div class="election__info__text">
+                    <h3 class="ballot-name">{{election.ballotName}}</h3>
+                </div>
+            </div>
+            <div class="election-rules text-body">
+                <h3>РАЗЪЯСНЕНИЕ О&nbsp;ПОРЯДКЕ ЗАПОЛНЕНИЯ БЮЛЛЕТЕНЯ</h3>
+                {{ election.ballotRules }}
+            </div>
+            <div class="election-name text-body">
+                {{ election.name }}
+            </div>
+            <form [formGroup]="candidatesList">
+                <div class="election__candidate" formArrayName="candidates"
+                     *ngFor="let item of candidatesFormArray.controls; let i=index;">
+                    <div class="candidate">
+                        <div class="candidate__text">
+                            <h4>{{election.candidates[i].fio}}</h4>
+                            <div class="candidate__description">{{election.candidates[i].description}}</div>
+                        </div>
+                        <div class="candidate__checkbox">
+                            <div class="check">
+                                <label>
+                                    <input class="check__input" type="checkbox" [formControlName]="i"
+                                           (change)="checked(i)">
+                                    <span class="check__box"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div #inputs>
+                        <div *ngIf="(isPreview$ | async) === false">
+                            <div class="candidate__button">
+                                <div *ngIf="item.dirty">
+                                    <button class="button button-blue" [disabled]="disabledButton$ | async"
+                                            (click)="vote()">Проголосовать
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!--        <div class="vote-block">-->
+        <!--            <button-->
+        <!--                    class="vote button button-blue"-->
+        <!--                    [disabled]="disabledButton$ | async"-->
+        <!--                    (click)="vote()"-->
+        <!--            >Проголосовать-->
+        <!--            </button>-->
+        <!--        </div>-->
+    </div>
+</ng-template>

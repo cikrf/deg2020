@@ -1,0 +1,64 @@
+@import '../../../../../../shared/styles/styles';
+
+.profile {
+  display: flex;
+  align-items: center;
+
+  &__link {
+    font-family: $font-family-caption;
+    color: $color-white;
+    font-weight: bold;
+
+    @media (min-width: $breakpoint-md-bottom) {
+      font-size: $font-size-caption;
+      line-height: $line-height-caption;
+    }
+    @media (max-width: $breakpoint-sm-top) {
+      font-size: 14px;
+      line-height: 22px;
+    }
+  }
+
+  @media (max-width: $breakpoint-sm-top) {
+    &__logout {
+      padding-top: 0;
+      display: flex;
+    }
+  }
+}
+
+.profile_link {
+  display: flex;
+  align-items: center;
+
+  &__img {
+    width: 4px;
+    height: 8px;
+    margin-left: 10px;
+  }
+}
+
+.logout {
+  margin-left: 12px;
+  padding-top: 2px;
+
+  &__img {
+    width: 24px;
+    height: 24px;
+  }
+
+  &-light {
+    &__exit {
+      font-family: $font-family-caption;
+      color: $color-grey-medium;
+      margin-right: 12px;
+    }
+
+    display: flex;
+    align-items: center;
+    &__img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}

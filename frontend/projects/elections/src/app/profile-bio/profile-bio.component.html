@@ -1,0 +1,67 @@
+<article class="profile">
+    <div class="container card_outer">
+        <div *ngIf="userInfo$ | async as info" class="profile__content card">
+            <div *ngIf="user$ | async as user; else wait" class="profile__content card">
+                <div class="profile__info">
+                    <div class="profile__img hide-desktop">
+                        <ng-container *ngTemplateOutlet="profileMale"></ng-container>
+                    </div>
+                    <div class="text-h1 profile__title">
+                        {{ user.lastName }}<br>
+                        {{ user.firstName }} {{ user.middleName }}
+                    </div>
+                    <div class="profile__data data">
+<!--                        <div *ngIf="passport$ | async as passport" class="data__item">-->
+<!--                            <div class="data__label text-caption">{{'PROFILE.PASSPORT' | translate}}</div>-->
+<!--                            <div class="data__value text-body">{{ passport }}</div>-->
+<!--                        </div>-->
+                        <div class="data__item">
+                            <div class="data__label text-caption">{{'PROFILE.BIRTHDATE' | translate}}</div>
+                            <div class="data__value text-body">{{ user.birthDate }}</div>
+                        </div>
+                    </div>
+                    <div *ngIf="info">
+                        <p>Общее совпадение: {{info.overall | percent: '1.1-5'}} </p>
+                        <p>Совпадение лица: {{info.face | percent: '1.1-5'}} </p>
+                        <p>Совпадение голоса: {{info.voice | percent: '1.1-5'}} </p>
+                    </div>
+                    <div class="profile__change change">
+                        <a class="change__data text-caption" href="#">{{'PROFILE.CHANGE_GOSUSLUGI' | translate}}</a>
+                        <div *ngIf="lang$ | async as lang" class="change__lang lang">
+                            <span class="lang__label text-body">{{'PROFILE.LANGUAGE_LABEL' | translate}}</span>
+                            <a class="lang__link text-body" href="javascript: void(0);" (click)="openLangModal()">{{ lang.description }}</a>
+                        </div>
+                    </div>
+                    <div class="profile__bio bio" [class.bio--registered]="bioRegistered">
+                        <ng-container *ngIf="bioRegistered; else notRegistered">
+                            <div class="bio__icon icon icon--sm icon-bio-square-ok"></div>
+                            <div class="bio__text text-body">
+                                {{'PROFILE.BIO_REGISTERED' | translate}}
+                            </div>
+                        </ng-container>
+                        <ng-template #notRegistered>
+                            <div class="bio__icon icon icon--sm icon-bio-square"></div>
+                            <div class="bio__text text-body">
+                                {{'PROFILE.BIO_NOT_REGISTERED' | translate}}
+                            </div>
+                        </ng-template>
+                        <a class="bio__more button button-blue" [routerLink]="'/profile-bio'">{{'PROFILE.BIO_MORE' | translate}}</a>
+                    </div>
+                </div>
+                <div class="profile__img hide-mobile hide-tablet">
+                    <ng-container *ngTemplateOutlet="profileMale"></ng-container>
+                </div>
+                <ng-template #profileMale>
+                    <img src="{{baseHref}}assets/icons/icon-profile-male.svg">
+                </ng-template>
+                <ng-template #profileFemale>
+                    <img src="{{baseHref}}assets/icons/icon-profile-female.svg">
+                </ng-template>
+            </div>
+
+        </div>
+    </div>
+</article>
+<ng-template #wait>
+    <app-spinner></app-spinner>
+</ng-template>

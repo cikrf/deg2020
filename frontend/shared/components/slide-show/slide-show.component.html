@@ -1,0 +1,22 @@
+<div class="carousel">
+    <div class="carousel__header header">
+        <div class="header-file-name"></div>
+        <div class="header-file-index"></div>
+        <div class="header-close" (click)="closeSlider.emit()">
+            <span class="icon icon--xs icon-close"></span>
+        </div>
+    </div>
+    <div class="carousel__content content">
+        <div class="content-prev" (click)="prev()">
+            <div *ngIf="prevAvailable()" class="arrow-wrapper">
+                <div class="arrow arrow-prev"></div>
+            </div>
+        </div>
+        <img class="content-item" [src]="slideItems[activeItem]">
+        <div class="content-next" (click)="next()">
+            <div *ngIf="nextAvailable()" class="arrow-wrapper">
+                <div class="arrow arrow-next"></div>
+            </div>
+        </div>
+    </div>
+</div>

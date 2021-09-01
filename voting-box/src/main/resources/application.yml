@@ -1,0 +1,102 @@
+server:
+  port: ${SERVER_PORT:8080}
+spring:
+  main.allow-bean-definition-overriding: true
+  mvc.async.request-timeout: 60000
+  application.name: deg-voting-box
+  jackson:
+    default-property-inclusion: non_null
+    deserialization:
+      fail-on-unknown-properties: false
+  liquibase:
+    change-log: classpath:db/changelog.xml
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/voting-box?reWriteBatchedInserts=true}
+    driver-class-name: ${DB_DRIVER:org.postgresql.Driver}
+    username: ${DB_USERNAME:voting-box}
+    password: ${DB_PASSWORD:voting-box}
+    hikari:
+      maximumPoolSize: ${DB_DATASOURCE_MAX_POOL_SIZE:20}
+      minimumIdle: ${DB_DAYASOURCE_MINIMUM_IDDLE:8}
+      idle-timeout: ${DB_DATASOURCE_IDLE_TIMEOUT:25000}
+      max-lifetime: ${DB_DATASOURCE_MAX_CONNECTION_LIFETIME:30000}
+      connection-timeout: ${DB_DATASOURCE_CONNECTION_TIMEOUT:60000}
+      validation-timeout: ${DB_DATASOURCE_CONNECTION_VALIDATION_TIMEOUT:40000}
+      data-source-properties:
+        cachePrepStmts: true
+        prepStmtCacheSize: 256
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: false
+  jpa:
+    properties:
+      hibernate:
+        jdbc.batch_size: 100
+        order_inserts: true
+        order_updates: true
+        jdbc.batch_versioned_data: true
+        generate_statistics: ${GENERATE_STATISTICS:false}
+        format_sql: ${FORMAT_SQL:false}
+    show-sql: ${SHOW_SQL:false}
+  http:
+    encoding:
+      charset: UTF-8
+      force: true
+  cache:
+    cache-names: election-simple-model-cache
+    redis:
+      time-to-live: ${REDIS_CACHE_TTL:86400000}
+  redis:
+    host: ${REDIS_CACHE_HOST:localhost}
+    database: 1
+kafka:
+  bootstrapAddress: ${KAFKA_BOOTSTRAP_ADDRESS:192.168.40.126:9092}
+  topicName: ${KAFKA_TOPIC_NAME:transactionsChannel}
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+    serviceUrl.defaultZone: ${DISCOVERY_ZONE:http://localhost:8761/eureka/}
+  instance:
+    statusPageUrlPath: /actuator/info
+    healthCheckUrlPath: /actuator/health
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    leaseRenewalIntervalInSeconds: 30
+    leaseExpirationDurationInSeconds: 30
+feign:
+  hystrix:
+    enabled: true
+  client:
+    config:
+      default:
+        connectTimeout: 70000
+        readTimeout: 70000
+hystrix:
+  isolationStrategy: ${HYSTRIX_ISOLATION_STRATEGY:THREAD}
+  timout: ${HYSTRIX_TIMEOUT_IN_MILLISECONDS:60000}
+  requestVolumeThreshold: ${HYSTRIX_REQUEST_VOLUME_THRESHOLD:10}
+  sleepWindowInMilliseconds: ${HYSTRIX_SLEEP_WINDOW_IN_MILLISECONDS:30000}
+  corePoolSize: ${HYSTRIX_CORE_POOL_SIZE:100}
+  maxPoolSize: ${HYSTRIX_MAX_POOL_SIZE:10000}
+  maxQueueSize: ${HYSTRIX_MAX_QUEUE_SIZE:100000}
+  queueSizeRejectionThreshold: ${HYSTRIX_QUEUE_SIZE_REJECTION_THRESHOLD:100}
+app:
+  security:
+    serviceKey: ${HEADER_KEY:JDJhJDEwJEVkdUhJMGhWZk1DT1BnTi94WjVrOHVqZThXOVcyZ0FRY0tUS2lxM3VqL3gyWDJJUE1qbUIy}
+management:
+  endpoint:
+    metrics.enabled: true
+    prometheus.enabled: true
+  endpoints.web.exposure.include: "health,info,prometheus"
+  metrics:
+    export.prometheus.enabled: true
+    enable:
+      jvm: true
+      tomcat: false
+      logback: false
+metric-names:
+  sendVoteRequest: ${SEND_VOTE_REQUEST_NAME:SEND_VOTE_REQUEST}
+  voteAlreadyMadeError: ${VOTE_ALREADY_MADE_ERROR_NAME:VOTE_ALREADY_MADE_ERROR}
+  voteAfterElectionCompletedError: ${VOTE_AFTER_ELECTION_COMPLETED_ERROR_NAME:VOTE_AFTER_ELECTION_COMPLETED_ERROR}
+  sendVoteSuccess: ${SEND_VOTE_SUCCESS_NAME:SEND_VOTE_SUCCESS}
+  blindSignCheckError: ${BLIND_SIGN_CHECK_ERROR_NAME:BLIND_SIGN_CHECK_ERROR}

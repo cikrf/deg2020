@@ -1,0 +1,17 @@
+<main *ngIf="(offlineStatus$ | async) !== false; else offline">
+    <router-outlet #routerOutlet="outlet" (activate)="onActivate($event, routerOutlet)"></router-outlet>
+</main>
+<div *ngIf="sha$ | async as sha" style="position: fixed; bottom: 0; right: 0; background: white;">{{sha}}</div>
+<ng-template #offline>
+    <main>
+        <article class="main">
+            <div class="container">
+                <app-result
+                        [icon]="'wi-fi'"
+                        [title]="'RESULT.OFFLINE' | translate"
+                        [text]="'RESULT.OFFLINE_TEXT' | translate">
+                </app-result>
+            </div>
+        </article>
+    </main>
+</ng-template>

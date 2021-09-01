@@ -1,0 +1,25 @@
+.wrapper {
+  ngl-combobox ::ng-deep {
+    .slds-form-element__label {
+      display: none;
+    }
+  }
+
+  .clear-icon {
+    display: none;
+    position: absolute;
+    right: 8px;
+    top: 8px;
+  }
+
+  &.has-value {
+    .clear-icon {
+      display: block;
+    }
+    ngl-combobox ::ng-deep {
+      .slds-icon_container {
+        display: none;
+      }
+    }
+  }
+}

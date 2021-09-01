@@ -1,0 +1,8 @@
+<ng-container *ngIf="_readonly; else elseTemplate">
+    {{_value}}
+</ng-container>
+<ng-template #elseTemplate>
+    <ngl-input [error]="error">
+        <input ngl type="text" [id]="id" [placeholder]="placeholder" [(ngModel)]="_value">
+    </ngl-input>
+</ng-template>

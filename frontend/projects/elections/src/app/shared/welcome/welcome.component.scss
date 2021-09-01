@@ -1,0 +1,99 @@
+@import 'shared/styles/_styles.scss';
+
+.welcome {
+  background-color: $color-blue-bg;
+
+  &__content {
+    display: flex;
+    @media (min-width: $breakpoint-md-bottom) {
+      justify-content: space-between;
+    }
+    @media (max-width: $breakpoint-sm-top) {
+      padding: 30px 0 24px 0;
+      flex-wrap: wrap;
+      flex-direction: column-reverse;
+      align-items: center;
+    }
+  }
+
+  &__img {
+    @media (min-width: $breakpoint-lg-bottom) {
+      margin-top: 24px;
+      flex: 0 0 500px;
+      width: 500px;
+      height: 356px;
+    }
+    @media (min-width: $breakpoint-md-bottom) and (max-width: $breakpoint-md-top) {
+      flex: 0 0 322.66px;
+      width: 500px;
+      height: 230px;
+      margin-top: 51px;
+    }
+    @media (max-width: $breakpoint-sm-top) {
+      width: 212px;
+      height: 156px;
+      margin-bottom: 12px;
+    }
+  }
+
+  &__about {
+    @media (min-width: $breakpoint-lg-bottom) {
+      flex: 1 1 auto;
+      margin-top: 64px;
+      padding-bottom: 64px;
+    }
+    @media (min-width: $breakpoint-md-bottom) and (max-width: $breakpoint-md-top) {
+      margin-top: 40px;
+      padding-bottom: 52px;
+      flex: 1 1 auto;
+    }
+    @media (max-width: $breakpoint-sm-top) {
+      flex: 0 0 100%;
+    }
+  }
+
+  &__title {
+    @media (min-width: $breakpoint-lg-bottom) {
+      font-size: $font-size-h0;
+      line-height: $line-height-h0;
+      font-family: $font-family-h0;
+      font-weight: $font-weight-h0;
+      color: $color-h0;
+      padding: 10px 0;
+    }
+    @media (min-width: $breakpoint-md-bottom) and (max-width: $breakpoint-md-top) {
+      font-size: $font-size-h1;
+      line-height: 36px;
+      font-family: $font-family-h1;
+      font-weight: $font-weight-h1;
+      color: $color-h1;
+      padding: 14px 0;
+    }
+    @media (max-width: $breakpoint-sm-top) {
+      font-size: 22px;
+      line-height: 24px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      letter-spacing: -0.3px;
+    }
+  }
+
+  &__text {
+    color: $color-grey-dark;
+    margin-top: $padding * 2;
+    padding: 4px 0;
+    @media (max-width: $breakpoint-sm-top) {
+      line-height: 22px;
+      text-align: center;
+      margin-top: $padding * 2;
+    }
+  }
+
+  &__button {
+    margin-top: $padding * 4;
+    @media (max-width: $breakpoint-sm-top) {
+      width: 100%;
+    }
+  }
+}

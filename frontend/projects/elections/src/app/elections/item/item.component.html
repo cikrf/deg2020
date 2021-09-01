@@ -1,0 +1,38 @@
+<div class="item">
+    <div class="container">
+        <div class="item__container">
+            <div class="item__header">
+                <div class="item__header-logo"></div>
+                <div class="item__header-title">
+                    <div class="title">
+                        {{election.name}}
+                    </div>
+                    <div class="desc">
+                        {{election.districtName}}
+                    </div>
+                    <div class="button-with-issued">
+                        <div class="issued" *ngIf="election.ballotAlreadyIssued">{{'LIST.ISSUED' | translate}}</div>
+                        <a class="button button-blue"
+                           [routerLink]="['/elections/preview/', election.candidates[0]?.location ||  election.id]"
+                        >Перейти к голосованию</a>
+                    </div>
+                </div>
+            </div>
+            <div class="item__date">
+                {{election.startDateTime | startDate: 'd MMMM Y, eeee'}}
+            </div>
+            <div class="item__title">Сведения о кандидатах</div>
+            <div class="item__list">
+                <div class="item__list-item" *ngFor="let candidate of election.candidates">
+                    <app-candidate [candidate]="candidate" [electionId]="election.externalId">
+                    </app-candidate>
+                </div>
+            </div>
+            <div class="item__button">
+                <a class="button button-blue"
+                   [routerLink]="['/elections/preview/', election.candidates[0].location  ||  election.id]">Перейти
+                    к голосованию</a>
+            </div>
+        </div>
+    </div>
+</div>

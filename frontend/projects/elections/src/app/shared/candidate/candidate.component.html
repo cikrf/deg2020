@@ -1,0 +1,36 @@
+<div class="candidate"
+     [class.active]="toggle"
+     (click)="toggle =!toggle"
+>
+    <button class="candidate__list-item-close"></button>
+    <div class="candidate__list-item-main">
+        <div class="candidate__list-item-name">{{candidate.number ? candidate.number + '.' : ''}} {{candidate.fio}}</div>
+        <!--<div class="candidate__list-item-status">{{candidate.status}}</div>-->
+        <div class="candidate__list-item-party">{{candidate.party}}</div>
+    </div>
+    <div class="candidate__list-item-pic" *ngIf="candidate.isHardcoded">
+        <!--<div [style.background-image]="'url(' + candidate.pic + ')'"></div>-->
+        <img [src]="baseHref + 'assets/media/photos-' + electionId + '/' + candidate.externalId + '.jpg'" alt=""/>
+    </div>
+    <div class="candidate__list-item-pic" *ngIf="!candidate.isHardcoded">
+        <svg viewBox="0 0 301 450" fill="none" xmlns="http://www.w3.org/2000/svg" class="no-photo">
+            <rect x="1" width="300" height="450" rx="8" fill="#CED9F0"/>
+            <path d="M109.608 296.753C106.853 297.749 104.098 298.745 101.468 299.741C101.468 307.586 99.7143 314.061 96.4582 318.668C90.0712 327.634 77.6728 331.743 66.9025 336.35C49.4947 343.821 43.8585 346.951 34.4549 351.64L20.3495 359.884C20.3495 372.429 14 450 14 450H152.063H290L283.651 359.884C283.651 359.884 277.63 355.177 269.545 351.64C250.76 343.422 250.123 341.58 231.588 333.486C225.201 330.747 219.189 327.509 213.429 324.147C211.675 323.151 209.421 322.404 208.294 320.785C204.537 315.804 203.034 308.209 203.034 299.492C200.78 298.621 196.146 298.123 194.894 296.379C193.767 294.761 194.393 292.146 194.017 289.905C193.14 284.799 191.888 277.577 193.015 272.098C193.892 267.242 197.524 264.254 199.402 260.02C201.907 254.417 203.284 248.066 205.664 242.089C206.415 240.222 207.417 237.233 209.045 236.237C209.922 235.739 210.799 235.988 211.3 235.241L212.802 230.385C214.43 226.151 216.434 221.917 217.687 217.186C218.688 213.077 219.315 207.1 218.438 202.243C218.062 200.002 216.685 196.516 217.436 193.776C219.941 183.317 225.076 170.491 222.32 156.545C219.44 142.474 212.427 135.501 205.163 126.287C202.533 122.676 200.028 119.19 197.398 115.578C189.008 105.243 173.979 100.761 154.943 101.01C151.562 101.383 148.181 101.757 144.799 102.255C137.911 103.749 131.149 105.617 125.889 108.73C116.872 114.084 111.737 123.423 102.72 128.653C98.5872 131.019 90.4469 130.77 85.8132 132.139C83.5589 154.055 83.1832 180.079 92.3254 195.519C90.4469 196.765 88.4431 198.01 86.5646 199.255C86.5646 208.843 86.3141 218.057 89.1945 225.279C91.8245 231.879 96.5835 236.611 99.3386 242.961C101.217 248.315 103.221 253.67 105.099 259.024C106.853 262.884 110.359 265.997 111.361 270.231C111.987 272.845 111.737 276.581 111.361 279.32C110.485 285.173 109.984 291.025 109.608 296.753Z" fill="white"/>
+        </svg>
+    </div>
+    <div class="candidate__list-item-data">
+        <ng-container *ngFor="let field of fields">
+            <div class="candidate__list-item" *ngIf="candidate[field[0]]">
+                <strong *ngIf="candidate[field[0]]">{{field[1]}}</strong>
+                &nbsp;
+                <span [innerHTML]="replaceForBr(field[0], candidate[field[0]])"></span> <!-- todo убрать, нельзя методы -->
+            </div>
+        </ng-container>
+        <div *ngIf="candidate?.incorrect && toggle">
+            <h2 class="incorrect-data ">Информация о выявленных фактах недостоверности представленных кандидатом сведений</h2>
+            <strong>Денежные средства, находящиеся на счетах (во вкладах) в банках:</strong>
+            <div>помимо указанных кандидатом счетов установлено:</div>
+            <div>{{ candidate.incorrect.money }}</div>
+        </div>
+    </div>
+</div>

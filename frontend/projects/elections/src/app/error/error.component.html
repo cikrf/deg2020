@@ -1,0 +1,13 @@
+<article class="main">
+    <div class="container">
+        <div class="main__content">
+            <app-result
+                    [icon]="'attention-red'"
+                    [title]="title$ | async"
+                    [text]="text$ | async"
+            >
+                <a *ngIf="return$ | async" routerLink="/" class="button button-blue">{{ 'ERRORS.HOME' | translate }}</a>
+            </app-result>
+        </div>
+    </div>
+</article>

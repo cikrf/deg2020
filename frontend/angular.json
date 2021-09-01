@@ -1,0 +1,357 @@
+{
+  "$schema": "node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "elections": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/elections",
+      "sourceRoot": "projects/elections/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/ballot-box",
+            "index": "projects/elections/src/index.html",
+            "main": "projects/elections/src/main.ts",
+            "polyfills": "projects/elections/src/polyfills.ts",
+            "tsConfig": "projects/elections/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/elections/src/assets",
+              "projects/elections/src/env.js"
+            ],
+            "styles": [
+              "node_modules/@angular/cdk/overlay-prebuilt.css",
+              "projects/elections/src/styles.scss"
+            ],
+            "scripts": [
+              { "input": "node_modules/gost-crypto/lib/gostASN1.js", "inject": false, "bundleName": "gostASN1" },
+              { "input": "node_modules/gost-crypto/lib/gostCert.js", "inject": false, "bundleName": "gostCert" },
+              { "input": "node_modules/gost-crypto/lib/gostCipher.js", "inject": false, "bundleName": "gostCipher" },
+              { "input": "node_modules/gost-crypto/lib/gostCMS.js", "inject": false, "bundleName": "gostCMS" },
+              { "input": "node_modules/gost-crypto/lib/gostCoding.js", "inject": false, "bundleName": "gostCoding" },
+              { "input": "node_modules/gost-crypto/lib/gostDigest.js", "inject": false, "bundleName": "gostDigest" },
+              { "input": "node_modules/gost-crypto/lib/gostEngine.js", "inject": false, "bundleName": "gostEngine" },
+              { "input": "node_modules/gost-crypto/lib/gostEngineWorker.js", "inject": false, "bundleName": "gostEngineWorker" },
+              { "input": "node_modules/gost-crypto/lib/gostRandom.js", "inject": false, "bundleName": "gostRandom" },
+              { "input": "node_modules/gost-crypto/lib/gostSecurity.js", "inject": false, "bundleName": "gostSecurity" },
+              { "input": "node_modules/gost-crypto/lib/gostSign.js", "inject": false, "bundleName": "gostSign" }
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/elections/src/environments/environment.ts",
+                  "with": "projects/elections/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": true,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "baseHref": "/",
+              "deployUrl": "/",
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "20mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "200kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "elections:build",
+            "proxyConfig": "./proxy.config.json"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "elections:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "elections:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/elections/src/test.ts",
+            "polyfills": "projects/elections/src/polyfills.ts",
+            "tsConfig": "projects/elections/tsconfig.spec.json",
+            "karmaConfig": "projects/elections/karma.conf.js",
+            "assets": [
+              "projects/elections/src/assets"
+            ],
+            "styles": [
+              "projects/elections/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/elections/tsconfig.app.json",
+              "projects/elections/tsconfig.spec.json",
+              "projects/elections/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/elections/e2e/protractor.conf.js",
+            "devServerTarget": "elections:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "elections:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "voting-box": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/voting-box",
+      "sourceRoot": "projects/voting-box/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/voting-box",
+            "index": "projects/voting-box/src/index.html",
+            "main": "projects/voting-box/src/main.ts",
+            "polyfills": "projects/voting-box/src/polyfills.ts",
+            "tsConfig": "projects/voting-box/tsconfig.app.json",
+            "assets": [
+              "projects/voting-box/src/assets",
+              "projects/voting-box/src/env.js"
+            ],
+            "styles": [
+              "projects/voting-box/src/styles.scss"
+            ],
+            "scripts": [
+              "node_modules/@vostokplatform/waves-api/dist/waves-api.js",
+              { "input": "node_modules/gost-crypto/lib/gostASN1.js", "inject": false, "bundleName": "gostASN1" },
+              { "input": "node_modules/gost-crypto/lib/gostCert.js", "inject": false, "bundleName": "gostCert" },
+              { "input": "node_modules/gost-crypto/lib/gostCipher.js", "inject": false, "bundleName": "gostCipher" },
+              { "input": "node_modules/gost-crypto/lib/gostCMS.js", "inject": false, "bundleName": "gostCMS" },
+              { "input": "node_modules/gost-crypto/lib/gostCoding.js", "inject": false, "bundleName": "gostCoding" },
+              { "input": "node_modules/gost-crypto/lib/gostDigest.js", "inject": false, "bundleName": "gostDigest" },
+              { "input": "node_modules/gost-crypto/lib/gostEngine.js", "inject": false, "bundleName": "gostEngine" },
+              { "input": "node_modules/gost-crypto/lib/gostEngineWorker.js", "inject": false, "bundleName": "gostEngineWorker" },
+              { "input": "node_modules/gost-crypto/lib/gostRandom.js", "inject": false, "bundleName": "gostRandom" },
+              { "input": "node_modules/gost-crypto/lib/gostSecurity.js", "inject": false, "bundleName": "gostSecurity" },
+              { "input": "node_modules/gost-crypto/lib/gostSign.js", "inject": false, "bundleName": "gostSign" }
+            ]
+          },
+          "configurations": {
+            "dev": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/voting-box/src/environments/environment.ts",
+                  "with": "projects/voting-box/src/environments/environment.dev.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": true,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "baseHref": "/voting-box/",
+              "deployUrl": "/voting-box/",
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "20mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "200kb"
+                }
+              ]
+            },
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/voting-box/src/environments/environment.ts",
+                  "with": "projects/voting-box/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": true,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "baseHref": "/voting-box/",
+              "deployUrl": "/voting-box/",
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "20mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "200kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "voting-box:build",
+            "proxyConfig": "./proxy.config.json"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "voting-box:build:production"
+            }
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/voting-box-ssr",
+            "main": "projects/voting-box/server.ts",
+            "tsConfig": "projects/voting-box/tsconfig.server.json"
+          },
+          "configurations": {
+            "dev": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "projects/voting-box/src/environments/environment.ts",
+                  "with": "projects/voting-box/src/environments/environment.dev.ts"
+                }
+              ],
+              "sourceMap": true,
+              "optimization": true,
+              "deployUrl": "/voting-box/"
+            },
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "projects/voting-box/src/environments/environment.ts",
+                  "with": "projects/voting-box/src/environments/environment.prod.ts"
+                }
+              ],
+              "sourceMap": true,
+              "optimization": true
+            }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "voting-box:build",
+            "serverTarget": "voting-box:server",
+            "port": 4201
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "voting-box:build:production",
+              "serverTarget": "voting-box:server:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "voting-box:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/voting-box/src/test.ts",
+            "polyfills": "projects/voting-box/src/polyfills.ts",
+            "tsConfig": "projects/voting-box/tsconfig.spec.json",
+            "karmaConfig": "projects/voting-box/karma.conf.js",
+            "assets": [
+              "projects/voting-box/src/assets"
+            ],
+            "styles": [
+              "projects/voting-box/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/voting-box/tsconfig.app.json",
+              "projects/voting-box/tsconfig.spec.json",
+              "projects/voting-box/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/voting-box/e2e/protractor.conf.js",
+            "devServerTarget": "voting-box:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "voting-box:serve:production"
+            }
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "elections",
+  "cli": {
+    "analytics": "afa63add-d822-4c6b-b19b-1a76d8c5f6a9"
+  }
+}

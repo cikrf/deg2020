@@ -1,0 +1,64 @@
+<div class="input-wrapper">
+    <ng-container *ngIf="_readonly; else elseTemplate">
+        {{_search || defaultValue}}
+    </ng-container>
+    <ng-template #elseTemplate>
+        <div class="input slds-input-has-icon" #dropreference>
+            <ngl-input (click)="show()" [class.opened]="showOptions">
+                <input autocomplete="off" ngl type="text" [(ngModel)]="_search"
+                       (ngModelChange)="searchElectionQuery$.next($event)"
+                       [placeholder]="placeholder">
+            </ngl-input>
+            <ng-template cdk-portal="">
+                <!--                <div class="slds-dropdown slds-dropdown_fluid slds-dropdown_length-5">-->
+                <!--                    <ul class="options-container">-->
+                <!--                        <li class="option" *ngFor="let election of elections"-->
+                <!--                            (click)="onSelectOption(election)">-->
+                <!--&lt;!&ndash;                            <div class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center">&ndash;&gt;-->
+                <!--                                {{ election.name }}-->
+                <!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+                <!--                        </li>-->
+                <!--                    </ul>-->
+                <!--                </div>-->
+                <!--                <div class="options-container">-->
+                <!--                    <div class="option" *ngFor="let election of elections" (click)="onSelectOption(election)">-->
+                <!--                        {{ election.name }}-->
+                <!--                    </div>-->
+                <!--                </div>-->
+                <!--                <div class="options-container">-->
+                <!--                    <div class="option" *ngFor="let election of elections" (click)="onSelectOption(election)">-->
+                <!--                        {{ election.name }}-->
+                <!--                    </div>-->
+                <!--                </div>-->
+                <div class="slds-dropdown slds-dropdown_fluid slds-dropdown_length-5" *ngIf="elections.length">
+                    <div class="options-container">
+                        <ul class="slds-listbox slds-listbox_vertical">
+                            <li class="slds-listbox__item" *ngFor="let election of elections"
+                                (click)="onSelectOption(election)">
+                                <div class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center">
+                                    {{ election.name }}
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </ng-template>
+        </div>
+        <button *ngIf="_value && !isLoading"
+                class="slds-button slds-button_icon slds-input__icon slds-input__icon_right clear-icon"
+                title="Clear" (click)="clear()">
+            <svg class="slds-button__icon slds-icon-text-light" aria-hidden="true">
+                <use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#clear"></use>
+            </svg>
+            <span class="slds-assistive-text">Очистить</span>
+        </button>
+
+        <ngl-spinner *ngIf="isLoading" size="small" variant="brand"></ngl-spinner>
+        <span *ngIf="!_value && !isLoading"
+              class="select-icon slds-icon_container slds-input__icon slds-input__icon_right"><svg
+                class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+        <use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#down"
+             x="0"></use></svg>
+        </span>
+    </ng-template>
+</div>

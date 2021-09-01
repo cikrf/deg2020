@@ -1,0 +1,5 @@
+<main>
+    <router-outlet></router-outlet>
+</main>
+
+<div *ngIf="sha$ | async as sha" style="position: fixed; bottom: 0px; right: 0px; background: white;">{{sha}}</div>

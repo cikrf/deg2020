@@ -1,0 +1,206 @@
+@import '../../../../../../shared/styles/_styles.scss';
+
+:host {
+  width: 100%;
+}
+
+.location {
+  font-family: $font-family-landing;
+  border-bottom: 1px solid $color-grey-extra-light;
+
+  @media (max-width: $breakpoint-sm-top) {
+    .container {
+      padding-right: 0;
+      padding-left: 0;
+    }
+  }
+
+  &__block {
+    padding: 67px 0 65px;
+
+    @media (max-width: $breakpoint-sm-top) {
+      padding: 34px 0 40px;
+    }
+  }
+
+  &__title {
+    font-size: $font-size-h0;
+    line-height: $line-height-h0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: $color-black;
+    margin-bottom: 53px;
+    font-weight: $font-weight-landing-medium;
+
+    @media (max-width: $breakpoint-sm-top) {
+      font-size: $font-size-landing-title;
+      line-height: $line-height-landing-title;
+      padding-left: 24px;
+      padding-right: 24px;
+      text-align: center;
+      margin-bottom: 33px;
+    }
+  }
+
+  &__list {
+    margin: 0 auto;
+    width: 944px;
+
+    @media (max-width: $breakpoint-md-top) {
+      width: 672px;
+    }
+
+    @media (max-width: $breakpoint-sm-top) {
+      width: 100%;
+    }
+
+    &-row {
+      display: flex;
+
+      @media (max-width: $breakpoint-sm-top) {
+        flex-direction: column-reverse;
+      }
+
+      &:nth-child(2n) {
+        flex-direction: row-reverse;
+
+        @media (max-width: $breakpoint-sm-top) {
+          flex-direction: column-reverse;
+        }
+
+        .location__list {
+          &-item {
+            align-items: flex-start;
+
+            &-text {
+              .title,
+              .desc {
+                text-align: left;
+              }
+            }
+          }
+
+          &-pic {
+            margin-left: 0;
+            margin-right: 48px;
+
+            @media (max-width: $breakpoint-sm-top) {
+              margin-right: 0;
+            }
+          }
+        }
+      }
+
+      & + & {
+        margin-top: 70px;
+
+        @media (max-width: $breakpoint-sm-top) {
+          margin-top: 40px;
+        }
+      }
+    }
+
+    &-item {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      flex-direction: column;
+
+      @media (max-width: $breakpoint-sm-top) {
+        padding: 30px 24px 0 24px;
+      }
+
+      .button {
+        font-family: $font-family-landing;
+        font-weight: $font-weight-landing-normal;
+        font-size: $font-size-landing-button;
+        line-height: $line-height-landing-button;
+        padding: 12px 64px;
+        border-radius: 10px;
+        background-color: $color-primary;
+
+        &:hover {
+          background-color: darken($color-primary, 5%);
+        }
+
+        @media (max-width: $breakpoint-sm-top) {
+          width: 100%;
+          margin-top: 17px;
+          font-size: $font-size-landing-desc;
+          line-height: $line-height-landing-desc;
+          border-radius: 4px;
+        }
+      }
+
+      &-text {
+          color: $color-black;
+
+        .title {
+          text-align: right;
+          font-weight: $font-weight-landing-medium;
+          font-size: $font-size-landing-button;
+          line-height: $line-height-landing-button;
+
+          @media (max-width: $breakpoint-sm-top) {
+            text-align: left;
+            font-size: $font-size-landing-desc;
+            line-height: $line-height-landing-desc;
+          }
+
+        }
+
+        .desc {
+          text-align: right;
+          font-weight: $font-weight-landing-normal;
+          margin-top: 16px;
+          font-size: $font-size-landing-title;
+          line-height: $line-height-landing-title;
+
+          @media (max-width: $breakpoint-md-top) {
+            font-size: $font-size-landing-desc;
+            line-height: $line-height-landing-desc;
+          }
+
+          @media (max-width: $breakpoint-sm-top) {
+            margin-top: 18px;
+            text-align: left;
+            font-size: $font-size-landing-desc;
+            line-height: $line-height-landing-desc;
+          }
+        }
+      }
+    }
+
+    &-pic {
+      margin-left: 48px;
+      min-width: 448px;
+      height: 296px;
+      background-repeat: no-repeat;
+      background-size: cover;
+
+      &_kursk {
+        background-image: url("../../../assets/img/img-kursk.png");
+      }
+
+      &_yaroslavl {
+        background-image: url("../../../assets/img/img-yaroslavl.png");
+      }
+
+      @media (max-width: $breakpoint-md-top) {
+        min-width: 312px;
+        background-size: cover;
+        background-position: center;
+      }
+
+      @media (max-width: $breakpoint-sm-top) {
+        margin: 0;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}

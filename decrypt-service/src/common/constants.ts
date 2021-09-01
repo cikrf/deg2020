@@ -1,0 +1,26 @@
+export const MAIN_REPOSITORY_TOKEN = 'MAIN_REPOSITORY_TOKEN'
+export const DECRYPTION_REPOSITORY_TOKEN = 'DECRYPTION_REPOSITORY_TOKEN'
+export const SUMS_REPOSITORY_TOKEN = 'SUMS_REPOSITORY_TOKEN'
+export const BLOCK_REPOSITORY_TOKEN = 'BLOCK_REPOSITORY_TOKEN'
+
+export const TX_104 = '104'
+export const TX_103 = '103'
+export const TX_11 = '11'
+export const TX_4 = '4'
+
+export const AUTHORIZED_FETCH = 'AUTHORIZED_FETCH'
+export const NODE_CONFIG = 'NODE_CONFIG'
+export const WAVES_API = 'WAVES_API'
+
+export const KEEP_N_TX_STAT = 100
+export const QUEUE_THREADS = 10
+export const QUEUE_THREAD_DELAY = 900 / QUEUE_THREADS
+export const MAX_VOTING_ERRORS = 30
+export const MIN_CONTRACT_STATE_UPDATE_INTERVAL = 1000
+
+export const IS_DECRYPT = 0b01
+export const IS_MAIN = 0b10
+
+export const VOTING_CONTRACT = 'VOTING_CONTRACT'
+
+export const POLL_MIN_DURATION = 300 // sec

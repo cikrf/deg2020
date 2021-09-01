@@ -1,0 +1,460 @@
+@import '../../../../../../shared/styles/variables';
+
+h2 {
+  font-family: $font-family-main;
+  font-size: 20px;
+  line-height: 24px;
+  margin: $padding*5;
+}
+
+.content {
+  @media (min-width: $breakpoint-md-bottom) and (max-width: $breakpoint-md-top) {
+    height: 100%;
+  }
+}
+
+@media (min-width: $breakpoint-md-bottom) and (max-width: $breakpoint-md-top) {
+  .main {
+    height: 100%;
+
+    &__content {
+      height: 100%;
+    }
+  }
+}
+
+h2 {
+  font-family: $font-family-main;
+  font-size: 20px;
+  line-height: 24px;
+  margin: $padding*5;
+}
+
+.container {
+  @media (max-width: $breakpoint-sm-top) {
+    padding: 0 8px;
+  }
+  @media (min-width: $breakpoint-md-bottom) and (max-width: $breakpoint-md-top) {
+    height: 100%;
+  }
+}
+
+.example {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__text {
+    font-family: Helvetica, Times New Roman;
+    color: #DD3E39AA;
+    text-transform: uppercase;
+    border: 4px solid #DD3E39;
+    padding: 0 2rem;
+    transform-origin: 50% 50%;
+    transform: rotate(-45deg);
+    flex: 0 0 50%;
+    text-align: center;
+    font-size: 6rem; // TODO: в общем превью 10rem. с теми стилями единственное различие сейчас это. чо нибудь придумать надо
+    z-index: 10;
+    pointer-events: none;
+    position: absolute;
+    top: 400px;
+
+    @media (max-width: $breakpoint-md-top) {
+      top: 450px;
+    }
+
+    @media (max-width: $breakpoint-sm-top) {
+      top: 460px;
+      font-size: 3rem;
+    }
+  }
+}
+
+.not-preview .example {
+  display: none !important;
+}
+
+#view {
+  @media (max-width: $breakpoint-sm-top) {
+    margin: 0 0 $padding*2 0;
+  }
+  @media (min-width: $breakpoint-md-bottom) {
+    margin: 0 0 $padding*8 0;
+  }
+}
+
+.election {
+  background: #FFFFFF;
+  border: 2px solid #000000;
+  position: relative;
+
+  &__info {
+    display: flex;
+    align-content: flex-start;
+    justify-content: space-between;
+    border-bottom: 1px solid #000;
+    text-transform: uppercase;
+    padding: 0 $padding*2;
+    text-align: center;
+
+    &__logo {
+      flex: 0 0 64px;
+      margin-right: $padding*4;
+    }
+
+    &__text {
+      flex: 1 1 auto;
+      color: #858B92;
+    }
+  }
+
+  &__greydark {
+    color: $color-grey-dark;
+  }
+
+  &__date {
+    padding: $padding*3;
+    color: #B0B8C0;
+    border-bottom: 1px solid #CED9F0;
+  }
+}
+
+.ballot-name {
+  margin-bottom: $padding*2;
+}
+
+.election-rules {
+  border-bottom: 1px solid #000;
+  text-align: justify;
+
+  @media (max-width: $breakpoint-sm-top) {
+    padding: $padding*2;
+  }
+  @media (min-width: $breakpoint-md-bottom) {
+    padding: $padding*3;
+  }
+
+  & h3 {
+    text-transform: uppercase;
+    text-align: center;
+    padding-bottom: $padding*2;
+  }
+
+}
+
+.election-title {
+  font-family: $font-family-body;
+  margin: 24px auto 16px auto;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 700;
+  color: #858B92;
+}
+
+.election-name {
+  border-bottom: 1px solid #000;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 700;
+
+  @media (max-width: $breakpoint-sm-top) {
+    padding: $padding*2;
+  }
+  @media (min-width: $breakpoint-md-bottom) {
+    padding: $padding*3;
+  }
+}
+
+.candidate {
+  display: flex;
+  justify-content: space-between;
+  padding: $padding*3 $padding*2;
+  width: 100%;
+  border-bottom: 1px solid #000;
+  box-sizing: border-box;
+
+  @media (max-width: $breakpoint-sm-top) {
+    margin: 0 auto $padding*3 auto;
+  }
+  @media (min-width: $breakpoint-md-bottom) {
+    margin: $padding*3 auto;
+  }
+
+  &:last-child {
+    margin-bottom: 0 !important;
+    border-bottom: none !important;
+  }
+
+  &__text {
+    flex: 1 1 auto;
+
+    @media (max-width: $breakpoint-sm-top) {
+      margin-right: 16px;
+    }
+    @media (min-width: $breakpoint-md-bottom) {
+      margin-right: 6px;
+      text-align: justify;
+    }
+
+    & h4 {
+      text-transform: uppercase;
+      padding-bottom: $padding*2;
+    }
+  }
+
+  &__description {
+    color: $color-grey-dark;
+  }
+
+  &__checkbox {
+    text-align: center;
+    padding-left: 16px;
+
+    @media (max-width: $breakpoint-sm-top) {
+      flex: 0 0 50px;
+    }
+    @media (min-width: $breakpoint-md-bottom) {
+      flex: 0 0 80px;
+    }
+  }
+
+  &__button {
+    margin-top: $padding*4;
+    text-align: center;
+
+    @media (max-width: $breakpoint-sm-top) {
+      .button {
+        padding: 11px 3px !important;
+        min-width: 0 !important;
+      }
+    }
+  }
+}
+
+.check {
+  display: block;
+
+  &__input {
+    position: absolute;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  &__box {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background: #FFFFFF;
+    border: 0.5px solid #858B92;
+    box-sizing: border-box;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15);
+  }
+
+  &__input:checked + .check__box:after {
+    position: absolute;
+    content: '';
+    left: 17px;
+    top: 3px;
+    width: 14px;
+    height: 30px;
+    border: solid #0B40B3;
+    border-width: 0 2px 2px 0;
+    transform: rotate(40deg);
+  }
+
+  &__input:disabled + .check__box {
+    background: #585858;
+    border: none;
+    cursor: not-allowed;
+  }
+
+}
+
+//:host-context(body:not(.done)) {
+//  filter: blur(10px);
+//  pointer-events: none;
+//}
+
+.preview-wrapper {
+  height: 100vh;
+  overflow: hidden;
+
+  .container {
+    height: 100%;
+  }
+}
+
+.preview-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.preview {
+  cursor: zoom-in;
+
+  .election {
+    margin: 0 !important;
+    pointer-events: none;
+  }
+
+  app-header,
+  .vote,
+  .timer-block,
+  .check__box:after {
+    display: none !important;
+  }
+
+}
+
+.vote {
+  background-color: #1E3685;
+  min-width: 258px;
+}
+
+.timer-block {
+  color: #858B92;
+  font-style: normal;
+  text-align: center;
+
+  @media (min-width: $breakpoint-md-bottom) {
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 32px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  @media (max-width: $breakpoint-sm-top) {
+    font-weight: normal;
+    font-size: 17px;
+    line-height: 24px;
+    padding-top: 25px;
+    padding-bottom: 22px;
+  }
+
+  b {
+    color: #000;
+  }
+}
+
+.vote-block {
+  text-align: center;
+
+  @media (min-width: $breakpoint-md-bottom) {
+    padding-top: 40px;
+  }
+
+  @media (max-width: $breakpoint-sm-top) {
+    padding: 24px 8px 0 8px;
+
+    .button {
+      width: 100% !important;
+    }
+  }
+}
+
+.custom-result {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: 0.01em;
+  color: #858B92;
+  margin-top: -35px;
+  padding-bottom: 41px;
+
+  b {
+    color: #000;
+  }
+
+  span {
+    display: inline-block;
+  }
+}
+
+.custom-buttons {
+  text-align: center;
+}
+
+.pre-preview {
+  text-align: center;
+
+  @media (max-width: $breakpoint-sm-top) {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+}
+
+.not-preview * {
+
+  &.check__box,
+  &.button {
+    cursor: pointer;
+  }
+}
+
+.popup__top {
+  height: 40px;
+  width: 100%;
+  background-color: $color-primary;
+  align-items: center;
+  padding: 0 24px;
+  display: flex;
+
+  &-title {
+    font-size: $font-size-landing-desc;
+    line-height: $line-height-landing-desc;
+    color: $color-white;
+    font-weight: $font-weight-landing-normal;
+    position: relative;
+
+    @media (max-width: $breakpoint-sm-top) {
+      padding-left: 37px;
+    }
+
+    &::before {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      background-image: url("../../../assets/icons/icon-close-popup-mobile.svg");
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+      z-index: 4;
+
+      @media (max-width: $breakpoint-sm-top) {
+        content: "";
+      }
+    }
+  }
+
+  &-close {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-image: url("../../../assets/icons/icon-close-grey.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    z-index: 4;
+
+    @media (max-width: $breakpoint-sm-top) {
+      display: none;
+    }
+  }
+}

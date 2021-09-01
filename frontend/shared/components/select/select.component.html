@@ -1,0 +1,12 @@
+<div class="wrapper" [class.has-value]="_value">
+    <ngl-combobox [options]="items" [(open)]="open" [(selection)]="_value" (selectionChange)="writeValue($event)">
+        <input nglCombobox [placeholder]="placeholder">
+    </ngl-combobox>
+    <button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right clear-icon"
+            title="Clear" (click)="clear()">
+        <svg class="slds-button__icon slds-icon-text-light" aria-hidden="true">
+            <use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#clear"></use>
+        </svg>
+        <span class="slds-assistive-text">Очистить</span>
+    </button>
+</div>

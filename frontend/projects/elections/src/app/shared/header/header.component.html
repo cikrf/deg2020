@@ -1,0 +1,30 @@
+<header>
+    <div class="container">
+        <div class="header" [class.header--center]="center$ | async">
+            <ng-container *ngIf="header$ | async as headerType">
+                <ng-container *ngIf="headerType !== 'landing'">
+                    <app-navigation *ngIf="false" [sandwich]="true" class="header__navi only-mobile sandwich"></app-navigation>
+                    <app-logo class="header__logo" [logoType]="headerType" [class.full-width]="headerType !== 'menu'"></app-logo>
+                    <ng-container *ngIf="headerType==='menu'">
+                        <app-navigation *ngIf="false" class="header__navi hide-mobile"></app-navigation>
+                        <app-profile-widget class="header__profile"></app-profile-widget>
+                    </ng-container>
+                </ng-container>
+
+                <ng-container *ngIf="headerType === 'landing'">
+                    <div class="header__list">
+                        <a class="header__list-item" href="#where">Где проводится ДЭГ?</a>
+                        <a class="header__list-item" href="#how">Как принять участие в ДЭГ?</a>
+                    </div>
+                    <div class="header__mobile" (click)="mobileMenu()">Меню</div>
+                </ng-container>
+            </ng-container>
+
+<!--            <ng-template #close>-->
+<!--                <a routerLink="/" (click)="closeEvent()" class="close only-desktop" *ngIf="closable$ | async">-->
+<!--                    <div class="icon icon&#45;&#45;xs icon-close-blue"></div>-->
+<!--                </a>-->
+<!--            </ng-template>-->
+        </div>
+    </div>
+</header>

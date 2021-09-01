@@ -1,0 +1,21 @@
+<form [formGroup]="langForm" (ngSubmit)="changeLang()">
+    <div class="lang_modal">
+        <div class="lang_modal__title text-h2">
+            {{'PROFILE.LANG_MODAL.TITLE' | translate}}
+        </div>
+        <ul *ngIf="(langs$ | async) as langs; else wait" class="lang_modal__content langs_list">
+            <li *ngFor="let item of langs" class="langs_list__item langs_item">
+                <input formControlName="lang" name="lang" class="langs_item__checkbox" type="radio" id="item{{item.code}}"
+                       [checked]="currentLang === item.code" value="{{item.code}}">
+                <label class="langs_item__label text-body" for="item{{item.code}}">{{item.description}}</label>
+            </li>
+        </ul>
+        <div class="lang_modal__buttons">
+            <button class="button" type="button" (click)="close()">{{'PROFILE.LANG_MODAL.CANCEL' | translate}}</button>
+            <button class="button button-blue" type="submit">{{'PROFILE.LANG_MODAL.SAVE' | translate}}</button>
+        </div>
+    </div>
+</form>
+<ng-template #wait>
+    <app-spinner></app-spinner>
+</ng-template>

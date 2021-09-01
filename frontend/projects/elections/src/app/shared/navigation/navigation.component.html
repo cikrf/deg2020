@@ -1,0 +1,21 @@
+<nav class="navi" *ngIf="!sandwich; else sandwichTemplate">
+</nav>
+<ng-template #sandwichTemplate>
+    <button class="sandwich__button" (click)="toggleSandwich()">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 1H16V3H0V1Z" fill="#7187B7"/>
+            <path d="M0 7H16V9H0V7Z" fill="#7187B7"/>
+            <path d="M0 13H16V15H0V13Z" fill="#7187B7"/>
+        </svg>
+    </button>
+    <nav *ngIf="sandwichState$ | async" class="sandwich__navi sandwich_navi">
+        <ul class="sandwich_navi__list">
+            <li class="sandwich_navi__item">
+                <a class="sandwich_navi__link" routerLink="/about">{{'NAVIGATION.ABOUT' | translate}}</a>
+            </li>
+            <li class="sandwich_navi__item">
+                <a class="sandwich_navi__link" href="/news">{{'NAVIGATION.HELP' | translate}}</a>
+            </li>
+        </ul>
+    </nav>
+</ng-template>

@@ -1,0 +1,82 @@
+@import 'shared/styles/_styles.scss';
+
+.how {
+  &__content {
+    @media (min-width: $breakpoint-md-bottom) {
+      padding: $padding * 7 0 $padding * 8 0;
+    }
+    @media (max-width: $breakpoint-sm-top) {
+      padding: $padding * 4 0 $padding * 5 0;
+    }
+  }
+  &__steps {
+    margin-top: $padding * 5;
+  }
+  &__step {
+    @media (max-width: $breakpoint-sm-top) {
+      margin-top: $padding * 4;
+    }
+  }
+  .step {
+    @media (min-width: $breakpoint-md-bottom) {
+      display: flex;
+      min-height: 120px;
+    }
+    @media (max-width: $breakpoint-sm-top) {
+      display: block;
+      text-align: center;
+    }
+
+    &:not(:first-child) {
+      @media (min-width: $breakpoint-md-bottom) {
+        margin-top: $padding * 3;
+        .step__number {
+          &:before {
+            content: "";
+            position: absolute;
+            left: 23.5px;
+            top: -96px;
+            height: 96px;
+            width: 1px;
+            background-color: #CED9F0;
+            display: block;
+          }
+        }
+      }
+    }
+    &__number {
+      align-items: center;
+      justify-content: center;
+      color: $color-white;
+      flex: 0 0 48px;
+      height: 48px;
+      width: 48px;
+      border-radius: 24px;
+      line-height: 24px;
+      background-color: #CED9F0;
+      @media (min-width: $breakpoint-md-bottom) {
+        display: flex;
+      }
+      @media (max-width: $breakpoint-sm-top) {
+        display: inline-flex;
+      }
+    }
+    &__content {
+      @media (min-width: $breakpoint-md-bottom) {
+        margin-left: 64px;
+        flex: 1 1 auto;
+      }
+    }
+    &__title {
+      line-height: 24px;
+      color: $color-black;
+      @media (max-width: $breakpoint-sm-top) {
+        margin-top: $padding * 2;
+      }
+    }
+    &__text {
+      margin-top: $padding * 2;
+      color: $color-grey-dark;
+    }
+  }
+}

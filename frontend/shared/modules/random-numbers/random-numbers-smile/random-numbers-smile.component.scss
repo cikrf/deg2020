@@ -1,0 +1,112 @@
+.smile {
+  * {
+    pointer-events: none;
+  }
+
+  &__icon {
+    width: 36px;
+    height: 36px;
+    z-index: 2;
+
+    &.red {
+      fill: #ff4f12;
+    }
+
+    &.blue {
+      fill: blue;
+    }
+
+    &.yellow {
+      fill: yellow;
+    }
+
+    &.green {
+      fill: green;
+    }
+
+    &.orange {
+      fill: orange;
+    }
+
+    &.brown {
+      fill: brown;
+    }
+
+    &.black {
+      fill: black;
+    }
+
+    &.violet {
+      fill: violet;
+    }
+
+    &.purple {
+      fill: purple;
+    }
+
+  }
+
+  &__square {
+    position: absolute;
+    left: 18px;
+    top: 18px;
+    width: 0;
+    height: 0;
+    display: block;
+    z-index: 1;
+    transition: ease all 0.3s;
+    max-width: unset;
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    left: 18px;
+    top: 18px;
+    width: 0;
+    height: 0;
+    display: block;
+    z-index: 0;
+    transition: ease all 0.3s;
+    background-color: #0B40B3;
+    max-width: unset;
+  }
+
+  &:hover,
+  &.active {
+    .smile__square {
+      left: -2px;
+      top: -2px;
+      width: 40px;
+      height: 40px;
+    }
+
+    &:after {
+      width: 73.54px;
+      height: 73.54px;
+      top: -18.38px;
+      left: -18.38px;
+      transform: rotate(405deg);
+    }
+  }
+
+  &.active:after {
+    background-color: #0B40B3;
+    animation: redcolor ease 2s;
+
+    @keyframes redcolor {
+      0% {
+        background-color: #0B40B3;
+      }
+      10% {
+        background-color: #F94110;
+      }
+      99% {
+        background-color: #F94110;
+      }
+      100% {
+        background-color: #0B40B3;
+      }
+    }
+  }
+}

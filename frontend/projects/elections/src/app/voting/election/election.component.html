@@ -1,0 +1,25 @@
+<article class="main">
+    <div class="container">
+        <app-header-light></app-header-light>
+        <h2 class="title" *ngIf="(loading$ | async) || (error$ | async) || (continue$ | async)">
+            {{'ELECTION.GENERATE_TITLE' | translate}}
+        </h2>
+        <app-result *ngIf="loading$ | async"
+                     [icon]="'spinner'"
+                     [title]="'ELECTION.GENERATE' | translate">
+        </app-result>
+        <app-result *ngIf="continue$ | async"
+                [title]="isNewBallot ? ('ELECTION.SUCCESS' | translate) : ('ELECTION.RECEIVED' | translate)"
+                [text]="isNewBallot ? ('ELECTION.SUCCESS_DESC' | translate) : ('ELECTION.RECEIVED_DESC' | translate)">
+            <button class="button button-blue"
+                    (click)="continueSubject$.complete()">{{ 'CIPHER.DONE.OK_BUTTON' | translate }}</button>
+        </app-result>
+        <app-result *ngIf="error$ | async as error;"
+                    [icon]="'attention-red'"
+                    [title]="error?.error?.error?.title || 'RESULT.ERROR' | translate"
+                    [text]="error?.error?.error?.description || 'RESULT.ERROR_MESSAGE' | translate">
+            <!--                TODO: Перевод ошибок -->
+            <a routerLink="/elections" class="button button-blue">{{'BUTTONS.RETURN' | translate}}</a>
+        </app-result>
+    </div>
+</article>

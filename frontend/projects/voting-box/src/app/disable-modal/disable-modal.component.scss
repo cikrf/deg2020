@@ -1,0 +1,13 @@
+@import 'shared/styles/_styles.scss';
+
+@media (max-width: $breakpoint-sm-top) {
+  .modal_content__button {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+}
+
+.wrapper {
+  padding: 40px;
+  text-align: center
+}

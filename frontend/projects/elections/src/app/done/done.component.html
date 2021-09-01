@@ -1,0 +1,15 @@
+<article class="main">
+    <div class="container">
+        <div class="main__content">
+            <h1 class="election-title">{{'ELECTION.TITLE' | translate}}</h1>
+            <app-result
+                    [icon]="'success'"
+                    [title]="'RESULT.THANKS' | translate"
+                    [text]="'RESULT.THANKSTEXT' | translate"
+            >
+                <button class="button button-blue"
+                        [routerLink]="['/']">{{ 'BUTTONS.RETURN' | translate }}</button>
+            </app-result>
+        </div>
+    </div>
+</article>

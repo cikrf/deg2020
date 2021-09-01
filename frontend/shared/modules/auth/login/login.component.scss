@@ -1,0 +1,242 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: calc(100vh - 2px);
+  position: relative;
+  padding: 123px 0;
+}
+
+.login {
+  width: 384px;
+  flex: 0 0 384px;
+  background: #FFFFFF;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.16);
+  border-radius: 4px;
+  padding: 32px 32px 37.5px 32px;
+
+  &__img {
+    margin-bottom: 10px;
+  }
+
+  &__type {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #000000;
+    padding: 10px 0;
+    margin: 0 16px;
+  }
+}
+
+.slds-form-element__label {
+  font-size: 12px;
+  line-height: 18px;
+  margin-bottom: 2px;
+}
+
+.slds-form {
+  display: flex;
+  flex-wrap: wrap;
+
+  &__row {
+    width: 100%;
+    flex: 0 0 100%;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  &__item {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  &-element {
+    flex: 0 0 100%;
+  }
+}
+
+.remember {
+  margin-top: 42px;
+
+  .slds-form-element__label {
+    font-size: 13px;
+    line-height: 20px;
+  }
+}
+
+.log-in {
+  margin-top: 27.5px;
+}
+
+.footer {
+  text-align: center;
+  position: absolute;
+  bottom: 63px;
+  div {
+    font-size: 13px;
+    line-height: 20px;
+    color: #080707;
+  }
+  a {
+    display: inline-block;
+    font-size: 12px;
+    line-height: 16px;
+    color: #000000;
+  }
+}
+
+//:host {
+//  display: block;
+//
+//  app-darkmode ::ng-deep {
+//    .slds-form-element {
+//      flex: 0 0 auto !important;
+//    }
+//
+//    .slds-form-element__label {
+//      padding-right: 20px !important;
+//    }
+//  }
+//}
+//
+//.login {
+//  height: 100%;
+//  min-height: calc(100vh - 2px);
+//  padding-bottom: 60px;
+//
+//  &.dark {
+//    .login__logo {
+//      background-color: #253045;
+//    }
+//  }
+//
+//  &__logo  {
+//    max-height: 420px;
+//    background-color: #fff;
+//    text-align: center;
+//    padding-top: 5vh;
+//    padding-bottom: 3vh;
+//  }
+//
+//  &__content {
+//    overflow-y: paged-y;
+//    height: 100%;
+//    background-color: #FAFAF9;
+//    padding-top: 40px;
+//    margin-bottom: 0;
+//    display: flex;
+//    justify-content: center;
+//    flex-wrap: wrap;
+//    align-content: flex-start;
+//  }
+//
+//  &__toggler {
+//    z-index: 3;
+//    position: absolute;
+//    left: 0;
+//    bottom: 0;
+//    width: 100%;
+//    display: block;
+//    height: 60px;
+//    background-color: #FAFAF9;
+//    border-top: 1px solid #E3E5ED;
+//  }
+//
+//  &__forgot {
+//    flex: 0 0 100%;
+//    text-align: center;
+//    margin-top: 10px;
+//    margin-bottom: 20px;
+//
+//    a {
+//      //font-family: PT Sans;
+//      font-style: normal;
+//      font-weight: normal;
+//      font-size: 14px;
+//      line-height: 17px;
+//      color: #1589EE;
+//    }
+//  }
+//}
+//
+//.form {
+//  .slds-form {
+//    width: 350px;
+//  }
+//
+//  .slds-form-element {
+//    width: 100%;
+//  }
+//
+//  .slds-form-element__label,
+//  .slds-input {
+//    //font-family: PT Sans;
+//    font-style: normal;
+//    font-weight: normal;
+//    font-size: 14px;
+//    line-height: 17px;
+//    color: #3E3E3C;
+//  }
+//
+//  .slds-input__icon {
+//    fill: #0070D2;
+//  }
+//
+//  .slds-form__row:not(:first-child) {
+//    margin-top: 27px;
+//  }
+//
+//  &__buttons {
+//    margin-top: 16px;
+//    display: flex;
+//    justify-content: space-between;
+//    align-items: center;
+//    flex-wrap: wrap;
+//
+//    .slds-form-element {
+//      width: auto;
+//    }
+//  }
+//
+//  &__border {
+//    margin-top: 20px;
+//    border-bottom: 1px solid #E3E5ED;
+//    flex: 0 0 100%;
+//  }
+//}
+//
+//.logo {
+//  &__img {
+//    width: 201px;
+//    height: 126px;
+//  }
+//
+//  &__type {
+//    margin-top: 30px;
+//
+//    span {
+//      //font-family: Rubik; // TODO: нет шрифта рубик
+//      //font-weight: 500; // TODO: тоже относится к нему
+//      font-weight: bold; // TODO: убрать при добавлении шрифта
+//      font-style: normal;
+//      font-size: 34px;
+//      line-height: 40px;
+//      text-align: center;
+//      display: block;
+//
+//      &:first-child {
+//        color: #DD3E39;
+//      }
+//
+//      &:last-child {
+//        color: #348aff;
+//      }
+//    }
+//  }
+//}

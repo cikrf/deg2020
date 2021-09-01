@@ -1,0 +1,92 @@
+@import '../../../../../../shared/styles/_styles.scss';
+
+:host {
+  width: 100%;
+}
+
+.timer {
+  font-family: $font-family-landing;
+  background-color: $color-blue-bg-light;
+
+  &__block {
+    padding: 40px 0 50px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    @media (max-width: $breakpoint-sm-top) {
+      padding: 33px 8px 39px;
+      height: auto;
+    }
+
+    .button {
+      font-family: $font-family-landing;
+      font-weight: $font-weight-landing-normal;
+      font-size: $font-size-landing-button;
+      line-height: $line-height-landing-button;
+      padding: 12px 64px;
+      border-radius: 10px;
+      background-color: $color-primary;
+
+      &:hover {
+        background-color: darken($color-primary, 5%);
+      }
+
+      @media (max-width: $breakpoint-sm-top) {
+        padding: 12px 30px;
+        width: 100%;
+        font-size: $font-size-landing-desc;
+        line-height: $line-height-landing-desc;
+      }
+    }
+  }
+
+  &__title {
+    font-weight: $font-weight-landing-medium;
+    color: $color-white;
+    font-size: $font-size-h0;
+    line-height: $line-height-h0;
+    text-align: center;
+    margin-bottom: 35px;
+
+    @media (max-width: $breakpoint-sm-top) {
+      font-size: $font-size-landing-title;
+      line-height: $line-height-landing-title;
+      margin-bottom: 22px;
+    }
+  }
+
+  &__list {
+    margin: 0 0 30px;
+    width: 420px;
+    display: flex;
+    justify-content: space-between;
+
+    @media (max-width: $breakpoint-sm-top) {
+      margin: 0 0 30px;
+    }
+
+    &-item {
+      color: $color-white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .data {
+        font-weight: $font-weight-landing-medium;
+        font-size: $font-size-landing-timer;
+        line-height: $line-height-landing-timer;
+      }
+      .text {
+        font-weight: $font-weight-landing-normal;
+        font-size: $font-size-landing-title;
+        line-height: $line-height-landing-title;
+
+        @media (max-width: $breakpoint-sm-top) {
+          font-size: $font-size-landing-little;
+          line-height: $line-height-landing-little;
+        }
+      }
+    }
+  }
+}

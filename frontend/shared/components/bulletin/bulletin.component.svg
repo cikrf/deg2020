@@ -1,0 +1,113 @@
+<ng-container *ngIf="election">
+    <svg class="bulletin__body"
+         [attr.viewBox]="'0 0 ' + widthBulletin + ' ' + (heightStart + election.candidates.length * heightBlock)"
+         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <g>
+            <rect class="bulletin__block" x="0" y="0" width="100%" height="155"/>
+            <text class="bulletin__header" x="0" y="0" text-anchor="middle">
+                <tspan class="bulletin__header-title" x="50%" dy="50">
+                    Электронный бюллетень
+                </tspan>
+                <tspan class="bulletin__header-subtitle" x="50%" dy="40">
+                    {{ballotName[0]}}
+                </tspan>
+                <tspan class="bulletin__header-subtitle" x="50%" dy="40">
+                    {{ballotName[1]}}
+                </tspan>
+            </text>
+        </g>
+        <!--<line class="bulletin__line" x1="0" y1="116" x2="1120" y2="116" />-->
+        <g>
+            <rect class="bulletin__block" x="0" y="155" width="100%" height="163"/>
+    <!--        <defs>-->
+    <!--            <path id="path1" [attr.d]="ballotRulesPath" stroke="orange" stroke-width="2"></path>-->
+    <!--        </defs>-->
+    <!--        <use xlink:href="#path1" x="0" y="35" stroke="blue" stroke-width="1" />-->
+            <text class="bulletin__rules" x="0" y="200" text-anchor="middle">
+                <tspan class="bulletin__rules-title" x="50%" dy="0">
+                    Разъяснение о порядке заполнения бюллетеня
+                </tspan>
+    <!--            <textPath xlink:href="#path1" startOffset="0%" >{{election.ballotRules}}</textPath>-->
+                <tspan x="50%" dy="38">
+                    {{ballotRules[0]}}
+                </tspan>
+                <tspan x="50%" dy="25">
+                    {{ballotRules[1]}}
+                </tspan>
+                <tspan x="50%" dy="25">
+                    {{ballotRules[2]}}
+                </tspan>
+            </text>
+        </g>
+        <!--<line class="bulletin__line" x1="0" y1="278" x2="1120" y2="278" />-->
+        <g>
+            <rect class="bulletin__block" x="0" y="318" width="100%" height="73"/>
+            <text class="bulletin__voiting" x="50%" y="360" text-anchor="middle">
+                {{election.name}}
+            </text>
+        </g>
+        <!--<line class="bulletin__line" x1="0" y1="352" x2="1120" y2="352" />-->
+        <g *ngFor="let candidate of election.candidates; let index=index;">
+            <g>
+                <rect
+                        class="bulletin-item__block"
+                        x="0"
+                        [attr.y]="heightStart + index * heightBlock"
+                        width="100%"
+                        [attr.height]="heightBlock"
+                ></rect>
+                <text class="bulletin-item__list"
+                      x="0"
+                      [attr.y]="heightStart + index * heightBlock - 55"
+                >
+                    <tspan class="bulletin-item__list-title"
+                           [attr.x]="marginLeftTitle"
+                           [attr.dy]="marginTopTitle"
+                    >
+                        {{candidate.fio}}
+                    </tspan>
+                </text>
+                <foreignObject class="bulletin-item__list-block hide-mobile"
+                               [attr.x]="marginLeftTitle"
+                               [attr.y]="heightStart + index * heightBlock + 85"
+                               [attr.width]="widthDesc"
+                               [attr.height]="heightTextLine * 3"
+                >
+                    <xhtml:div class="bulletin-item__list-desc">
+                        {{candidate.description}}
+                    </xhtml:div>
+                </foreignObject>
+
+                <rect class="bulletin-item__input"
+                      [attr.x]="coordXInput"
+                      [attr.y]="heightStart + index * heightBlock + 50"
+                      [attr.width]="widthInput"
+                      [attr.height]="heightInput"
+                      id="{{index + 1}}"
+                      (click)="updateVal(index)"
+                      [class.active]="(value$ | async) === index"
+                ></rect>
+                <g class="bulletin-item__input-active">
+                    <rect
+                            class="bulletin-item__input"
+                            [attr.x]="coordXInput"
+                            [attr.y]="heightStart + index * heightBlock + 50"
+                            [attr.width]="widthInput"
+                            [attr.height]="heightInput"></rect>
+                    <line class="bulletin-item__line" [attr.x1]="coordXMark1"
+                          [attr.y1]="heightStart + index * heightBlock + 50 + 6" [attr.x2]="coordXMark2"
+                          [attr.y2]="heightStart + index * heightBlock + 50 + 44"></line>
+                    <line class="bulletin-item__line" [attr.x1]="coordXMark1"
+                          [attr.y1]="heightStart + index * heightBlock + 50 + 44" [attr.x2]="coordXMark2"
+                          [attr.y2]="heightStart + index * heightBlock + 50 + 6"></line>
+                </g>
+            </g>
+        </g>
+        <g *ngIf="sample">
+            <rect class="bulletin__example" x="298" y="210" width="524" height="152" transform='rotate(-45 720 340)'/>
+            <text class="bulletin__example-text" x="50%" y="320" text-anchor="middle" transform='rotate(-45 720 340)'>
+                Образец
+            </text>
+        </g>
+    </svg>
+</ng-container>

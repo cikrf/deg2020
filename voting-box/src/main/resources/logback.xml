@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+    <variable name="APP_LOG_LEVEL" value="${APP_LOG_LEVEL:-info}" />
+    <variable name="APP_GRAYLOG_ID" value="${APP_GRAYLOG_ID:-deg-voting-box}" />
+    <variable name="GRAYLOG_WEB_ENDPOINT_URI" value="${GRAYLOG_WEB_ENDPOINT_URI:-localhost}" />
+    <variable name="GRAYLOG_WEB_ENDPOINT_PORT" value="${GRAYLOG_WEB_ENDPOINT_PORT:-12201}" />
+
+    <appender name="GELF" class="de.siegmar.logbackgelf.GelfUdpAppender">
+        <graylogHost>${GRAYLOG_WEB_ENDPOINT_URI}</graylogHost>
+        <graylogPort>${GRAYLOG_WEB_ENDPOINT_PORT}</graylogPort>
+        <maxChunkSize>508</maxChunkSize>
+        <useCompression>true</useCompression>
+        <layout class="de.siegmar.logbackgelf.GelfLayout">
+            <originHost>${APP_GRAYLOG_ID}</originHost>
+            <includeRawMessage>true</includeRawMessage>
+            <includeMarker>true</includeMarker>
+            <includeMdcData>true</includeMdcData>
+            <includeCallerData>true</includeCallerData>
+            <includeRootCauseData>true</includeRootCauseData>
+            <includeLevelName>false</includeLevelName>
+            <shortPatternLayout class="ch.qos.logback.classic.PatternLayout">
+                <pattern>%m%nopex</pattern>
+            </shortPatternLayout>
+            <fullPatternLayout class="ch.qos.logback.classic.PatternLayout">
+                <pattern>%m</pattern>
+            </fullPatternLayout>
+            <staticField>app_name:${APP_GRAYLOG_ID}</staticField>
+            <staticField>os_arch:${os.arch}</staticField>
+            <staticField>os_name:${os.name}</staticField>
+            <staticField>os_version:${os.version}</staticField>
+        </layout>
+    </appender>
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${CONSOLE_LOG_PATTERN}"</pattern>
+        </encoder>
+    </appender>
+
+    <root level="${APP_LOG_LEVEL}">
+        <appender-ref ref="GELF" />
+        <appender-ref ref="CONSOLE" />
+    </root>
+
+</configuration>

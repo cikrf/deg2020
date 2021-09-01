@@ -1,0 +1,79 @@
+@import '../../../../../../shared/styles/styles';
+
+:host {
+  width: 100%;
+}
+
+.informer {
+  background-color: $color-blue-bg;
+  font-family: $font-family-landing;
+  text-align: center;
+
+  &__block {
+    padding: 67px 0 64px;
+
+    @media (max-width: $breakpoint-sm-top) {
+      padding: 28px 0 40px;
+    }
+
+    .button {
+      font-family: $font-family-landing;
+      font-weight: $font-weight-landing-normal;
+      font-size: $font-size-landing-button;
+      line-height: $line-height-landing-button;
+      padding: 12px 64px;
+      border-radius: 10px;
+      background-color: $color-primary;
+
+      &:hover {
+        background-color: darken($color-primary, 5%);
+      }
+
+      @media (max-width: $breakpoint-md-top) {
+        padding: 12px 56px;
+      }
+
+      @media (max-width: $breakpoint-sm-top) {
+        padding: 12px 30px;
+        width: 100%;
+        font-size: $font-size-landing-desc;
+        line-height: $line-height-landing-desc;
+      }
+    }
+  }
+
+  &__title {
+    font-size: $font-size-h0;
+    line-height: $line-height-h0;
+    color: $color-orange;
+    font-weight: $font-weight-landing-medium;
+    margin-bottom: 15px;
+
+    @media (max-width: $breakpoint-sm-top) {
+      margin-bottom: 8px;
+      font-size: $font-size-landing-title;
+      line-height: $line-height-landing-title;
+    }
+  }
+
+  &__sub-title {
+    font-weight: $font-weight-landing-medium;
+    font-size: $font-size-landing-button;
+    line-height: $line-height-landing-button;
+    color: $color-black;
+    margin-bottom: 8px;
+
+    @media (max-width: $breakpoint-sm-top) {
+      font-size: $font-size-landing-desc;
+      line-height: $line-height-landing-desc - 5;
+    }
+  }
+
+  &__text {
+    font-weight: $font-weight-landing-normal;
+    font-size: $font-size-landing-title;
+    line-height: $line-height-landing-title;
+    color: $color-black;
+    margin-bottom: 32px;
+  }
+}

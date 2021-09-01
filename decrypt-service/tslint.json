@@ -1,0 +1,56 @@
+{
+  "defaultSeverity": "error",
+  "extends": ["tslint:latest"],
+  "linterOptions": {
+    "exclude": ["node_modules/**/*.ts", "src/migrations/**/*", "coverage/lcov-report/*.js"]
+  },
+  "rules": {
+    "interface-name": false,
+    "object-literal-sort-keys": false,
+    "member-access": [true, "no-public"],
+    "no-implicit-dependencies": false,
+    "no-console": [true, "warning"],
+    "ordered-imports": false,
+    "no-debugger": false,
+    "variable-name": [
+      true,
+      "allow-leading-underscore",
+      "allow-pascal-case",
+      "ban-keywords",
+      "check-format"
+    ],
+    "max-classes-per-file": false,
+    "interface-over-type-literal": false,
+    "no-submodule-imports": false,
+    "semicolon": [true, "never"],
+    "quotemark": [true, "single"],
+    "trailing-comma": [
+      true,
+      {
+        "multiline": {
+          "objects": "always",
+          "arrays": "always",
+          "functions": "always",
+          "typeLiterals": "ignore"
+        },
+        "singleline": "never"
+      }
+    ],
+    "curly": [true, "ignore-same-line"],
+    "no-async-without-await": true,
+    "no-return-await": true,
+    "prefer-object-spread": true,
+    "prefer-const": true,
+    "whitespace": true,
+    "no-bitwise": false,
+    "array-type": [true, "array-simple"],
+    "max-line-length": [
+      false,
+      {
+        "limit": 120,
+        "check-strings": true,
+        "check-regex": true
+      }
+    ]
+  }
+}

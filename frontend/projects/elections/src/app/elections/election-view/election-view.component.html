@@ -1,0 +1,43 @@
+<div class="popup">
+    <div class="popup__top">
+        <div class="popup__top-title modal_close">
+            {{ 'RULES.EXAMPLE' | translate }}
+        </div>
+        <div class="popup__top-close modal_close"></div>
+    </div>
+</div>
+<div *ngIf="election" class="content">
+    <div class="election">
+        <div class="example">
+            <div class="example__text">ОБРАЗЕЦ</div>
+        </div>
+        <h1 class="election-title">Электронный бюллетень</h1>
+        <div class="election__info">
+            <div class="election__info__text">
+                <h3 class="ballot-name">{{election.ballotName}}</h3>
+            </div>
+        </div>
+        <div class="election-rules text-body">
+            <h3>РАЗЪЯСНЕНИЕ О&nbsp;ПОРЯДКЕ ЗАПОЛНЕНИЯ БЮЛЛЕТЕНЯ:</h3>
+            {{ election.ballotRules }}
+        </div>
+        <div class="election-name text-body">
+            {{ election.name }}
+        </div>
+        <div class="election__candidate candidate"
+             *ngFor="let item of election.candidates; let i=index;">
+            <div class="candidate__text">
+                <h4>{{item.fio}}</h4>
+                <div class="candidate__description">{{item.description}}</div>
+            </div>
+            <div class="candidate__checkbox">
+                <div class="check">
+                    <label>
+                        <span class="check__box"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

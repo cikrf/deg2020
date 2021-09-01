@@ -1,0 +1,42 @@
+<div id="where" class="location">
+    <div class="container">
+        <div class="location__block">
+            <div class="location__title">
+                <span>Где проводится</span>
+                <span>дистанционное электронное голосование?</span>
+            </div>
+            <div class="location__list">
+                <div class="location__list-row">
+                    <div class="location__list-item">
+                        <div class="location__list-item-text">
+                            <div class="title">Курская область</div>
+                            <div class="desc">
+                                Голосование на дополнительных выборах
+                                депутатов Государственной Думы Федерального Собрания Российской Федерации седьмого созыва
+                                по Сеймскому одномандатному избирательному
+                                округу №&nbsp;110
+                            </div>
+                        </div>
+                        <button class="button button-blue" *ngIf="button" (click)="openModal(1)" [disabled]="disabled">{{button}}</button>
+                    </div>
+                    <div class="location__list-pic location__list-pic_kursk"></div>
+                </div>
+                <div class="location__list-row">
+                    <div class="location__list-item">
+                        <div class="location__list-item-text">
+                            <div class="title">Ярославская область</div>
+                            <div class="desc">
+                                Голосование на дополнительных выборах
+                                депутатов Государственной Думы Федерального Собрания Российской Федерации седьмого созыва
+                                по Ярославскому одномандатному избирательному
+                                округу №&nbsp;194
+                            </div>
+                        </div>
+                        <button class="button button-blue" *ngIf="button" (click)="openModal(2)" [disabled]="disabled">{{button}}</button>
+                    </div>
+                    <div class="location__list-pic location__list-pic_yaroslavl"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

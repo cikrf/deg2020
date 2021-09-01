@@ -1,0 +1,95 @@
+@import 'shared/styles/styles';
+
+.lang_modal {
+  display: flex;
+  flex-direction: column;
+  background-color: $color-white;
+  @media (min-width: $breakpoint-md-bottom) {
+    max-height: 570px;
+  }
+  @media (max-width: $breakpoint-sm-top) {
+    max-height: 100vh;
+  }
+  &__title {
+    border-bottom: 1px solid #E7ECF7;
+    @media (min-width: $breakpoint-md-bottom) {
+      padding: 21px 64px 18px 32px;
+      line-height: 28px;
+    }
+    @media (max-width: $breakpoint-sm-top) {
+      padding: 56px 40px 24px 16px;
+      font-size: 18px;
+      line-height: 22px;
+    }
+  }
+  &__content {
+    overflow-y: scroll;
+  }
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+    @media (min-width: $breakpoint-md-bottom) {
+      padding: $padding * 4;
+      .button:not(:first-child) {
+        margin-left: $padding * 2;
+      }
+    }
+    @media (max-width: $breakpoint-sm-top) {
+      padding: $padding * 2;
+      .button:not(:first-child) {
+        margin-left: $padding;
+      }
+      .button {
+        flex: 0 0 calc(50% - #{$padding/2});
+        min-width: unset;
+      }
+    }
+  }
+}
+
+.langs_list {
+  .langs_item {
+    &__checkbox {
+      display: none;
+      &:checked + .langs_item__label:before {
+        display: none;
+      }
+      &:not(:checked) + .langs_item__label:after {
+        display: none;
+      }
+    }
+    &__label {
+      display: block;
+      border-bottom: 1px solid #E7ECF7;
+      cursor: pointer;
+      @media (min-width: $breakpoint-md-bottom) {
+        padding: 24px 137px 24px 32px;
+      }
+      @media (max-width: $breakpoint-sm-top) {
+        padding: 24px 48px 24px 16px;
+      }
+      &:hover {
+        background-color: $color-blue-bg;
+      }
+      &:before,
+      &:after {
+        content: '';
+        display: block;
+        width: 20px;
+        height: 20px;
+        right: 36px;
+        top: 24px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        position: absolute;
+      }
+      &:before {
+        background-image: url('../../../assets/icons/icon-radio.svg');
+      }
+      &:after {
+        background-image: url('../../../assets/icons/icon-radio-checked.svg');
+      }
+    }
+  }
+}
